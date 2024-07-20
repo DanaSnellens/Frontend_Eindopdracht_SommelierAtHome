@@ -1,22 +1,22 @@
-import './Home.css';
+import './HomePage.module.css';
 import wineglass from '../../assets/wineglass-background.jpg'
 
-function Home() {
+function HomePage() {
     return (
         <>
-            <header>
-                <div>
+            <header className="header outer-content-container">
+                <div className="inner-content-container">
                     <img src={wineglass} alt="Background image of wineglass"/>
                 </div>
                 <h1>WE ❤️ WINE</h1>
             </header>
 
             <section>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque autem blanditiis earum eligendi esse excepturi, explicabo facere fugiat illo, illum incidunt, inventore ipsa minima nisi odio optio pariatur perferendis quidem sapiente sint tempora tempore tenetur voluptas. Animi aut debitis ducimus incidunt laudantium ratione, soluta. Architecto dolor iusto similique tenetur ullam!</p>
+                <p>Bij Somm@Home kan je terecht voor professioneel wijnadvies voor elke gelegenheid. Al onze wijnen zijn geselecteerd door onze ervaren sommeliers. Heeft u een etentje bij u thuis en wilt u persoonlijk wijnadvies bij de gerechten? Ook dat behoort tot de mogelijkheden, onze sommeliers maken hemelse wijn-spijs combinaties en bezorgen de wijn eventueel bij u thuis.</p>
 
             </section>
         </>
     );
 }
 
-export default Home;
+export default HomePage;

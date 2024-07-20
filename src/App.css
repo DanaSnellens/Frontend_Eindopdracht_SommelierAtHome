@@ -1,42 +1,49 @@
-#root {
+
+/*STOND IN BASIS VITE PROJECT*/
+/*#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}*/
+
+/*STOND IN HW BLOG 2 APP.CSS*/
+/* De buitenste container is altijd de volledige schermbreedte. Het is een flexbox container die zijn inhoud altijd netjes horizontaal centreert */
+.outer-content-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/*De binnenste container is maximaal 1400px breed, zodat het er ook goed uitziet op brede schermen.
+Hij mag krimpen als het scherm minder breed wordt, maar niet groeien als er meer ruimte is.*/
+.inner-content-container {
+  flex-basis: 1400px;
+  flex-shrink: 1;
+  flex-grow: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inner-content-container__text-restriction {
+  flex-basis: 1000px;
+  flex-shrink: 1;
+  flex-grow: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.inner-content-container,
+.inner-content-container__text-restriction {
+  /*We voegen margin toe aan de linker- en rechterkant, zodat de content nooit helemaal tegen de rand gedrukt kan worden*/
+  margin: 0 20px;
+  padding: 100px 0;
+  /*We zorgen er ook voor dat deze flex-item op haar beurt ook weer een flexbox container is, waarin alle children onder elkaar komen te staan*/
+  display: flex;
+  flex-direction: column;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.footer-navigation {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  text-align: center;
+  padding: 32px 0;
+  font-weight: 600;
 }
