@@ -6,9 +6,9 @@ function HomePage() {
         <>
             <header className="header outer-content-container">
                 <div className="inner-content-container">
-                    <img src={wineglass} alt="Background image of wineglass"/>
+
                 </div>
-                <h1>WE ❤️ WINE</h1>
+                <h1>Wine & food pairing</h1>
             </header>
 
             <section>

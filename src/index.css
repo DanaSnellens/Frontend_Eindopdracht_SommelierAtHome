@@ -1,17 +1,94 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-primary: #D9CAB3;
+  --color-secondary: #90323D;
+  --color-tertiary: #BC8034;
+  --color-quaternary: #8C7A6B;
+  --color-secondary-dark: #5E0B15;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-logo-background-sunset: #F3C384;
+  --color-avocado:#5D762B;
+  --color-green-light: #A3BF50;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'PT Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  color: var(--color-secondary);
 }
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 3.4em;
+  line-height: 1.1;
+  margin-block: 1em;
+}
+
+h2 {
+  margin-block: 2.3em;
+}
+
+h3 {
+  margin-block: 1.6em;
+}
+
+h4 {
+  margin-block: 1.33em;
+}
+
+p {
+  font-size: 1.2em;
+  margin-block: 0.5em;
+}
+
+img {
+  width: 100%;
+}
+
+figure {
+  margin: 0 0 2em 0;
+}
+
+figcaption {
+  text-align: right;
+  font-size: 0.9em;
+}
+
+a,
+a:visited {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+em {
+  font-style: italic;
+}
+
+/*
 
 a {
   font-weight: 500;
@@ -66,3 +143,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+*/

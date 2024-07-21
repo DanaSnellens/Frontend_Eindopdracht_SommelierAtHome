@@ -1,16 +1,24 @@
-import styles from './Navigation.module.css';
-import Button from '../button/Button.jsx';
-import {Link, useNavigate} from 'react-router-dom';
+
+import './Navigation.css';
+
+/*import Button from '../button/Button.jsx';*/
+import {Link/*, useNavigate*/} from 'react-router-dom';
 function Navigation() {
-    const navigate = useNavigate();
+/*    const navigate = useNavigate();*/
 
     return (
-        <ul className="nav-menu">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/wines">Wines</Link></li>
-            <li><Link to="/about">About us</Link></li>
-
-        </ul>
+        <nav className=  "main-navigation outer-content-container">
+            <div className= "inner-nav-container">
+                <ul className="main-navigation-links">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About us</Link></li >
+                    <li><Link to="/wines">Wines</Link></li>
+                    <li><Link to="/recipes">Recipes</Link></li>
+                    <li><Link to="/advice">Personal Advice </Link></li>
+                    <li><Link to="/sommeliers">Our Sommeliers</Link></li>
+                </ul>
+            </div>
+        </nav>
     )
 }
 
