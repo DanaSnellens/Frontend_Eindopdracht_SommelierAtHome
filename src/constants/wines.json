@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name" : "Bla",
+    "grapeVarietal" : "Pinot Noir",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "year" : 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "food-pairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... " //Begint altijd met eerste zin van shortDescription
+
+  },
+
+  {
+    "id": 2,
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "year" : 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "food-pairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... " //Begint altijd met eerste zin van shortDescription
+
+  },
+  {
+    "id": 3,
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "year" : 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "food-pairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... " //Begint altijd met eerste zin van shortDescription
+
+  },
+
+  {
+    "id": 4,
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "year" : 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "food-pairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... " //Begint altijd met eerste zin van shortDescription
+
+  },
+
+  {
+    "id": 5,
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "year" : 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "food-pairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... " //Begint altijd met eerste zin van shortDescription
+
+  },
+
+  {
+    "id": 6,
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "year" : 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "food-pairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... " //Begint altijd met eerste zin van shortDescription
+
+  },
+  {
+    "id": 7,
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "year" : 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "food-pairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... " //Begint altijd met eerste zin van shortDescription
+
+  }
+
+
+
+]
