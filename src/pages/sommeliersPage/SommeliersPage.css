@@ -1,0 +1,7 @@
+.section-sommeliers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
