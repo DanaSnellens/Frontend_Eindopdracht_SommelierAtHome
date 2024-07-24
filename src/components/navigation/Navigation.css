@@ -1,5 +1,5 @@
 .main-navigation {
-    background-color: var(--color-tertiary);
+    background-color: var(--color-secondary-dark);
     padding: 16px 0;
     justify-content: space-between;
     gap: 50px;
@@ -8,10 +8,11 @@
 
 .main-navigation-links {
     list-style: none;
+    text-transform: uppercase;
 }
 .main-navigation a,
 .main-navigation a:visited {
-    color: var(--color-black);
+    color: var(--color-white);
     font-weight: 600;
 }
 

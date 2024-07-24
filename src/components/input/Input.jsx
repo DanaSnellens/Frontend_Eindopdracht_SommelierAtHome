@@ -1,7 +1,7 @@
-import styles from './Input.module.css';
+import './Input.css';
 
 function Input({ labelText, name, handleChange, required, type, formStateValue }) {
-    const labelInputLink = `post-${name}`;
+    const labelInputLink = `wine-${name}`;
 
     return (
         <>

@@ -1,8 +1,17 @@
-function RecipeTile() {
-    return (
-        <>
+import {Link} from "react-router-dom";
 
-        </>
+function RecipeTile( {id, image, name, course, mainIngredient, otherIngredients, difficulty, preparationTime, cookingTime, description} ) {
+    return (
+        <article className="recipe-tile">
+            <img className="recipe-image" alt="Afbeelding recept" src={image}/>
+            <h2 className="recipe-name"><Link to={`/recipes/${id}`}>{name}</Link></h2>
+            <h4>{course}</h4>
+            <h5><em>{mainIngredient}</em></h5>
+            <p>{otherIngredients}</p>
+            <p>{difficulty} </p>
+            <p>{preparationTime}</p>
+            <p>Korte beschrijving</p>
+        </article>
     )
 }
 

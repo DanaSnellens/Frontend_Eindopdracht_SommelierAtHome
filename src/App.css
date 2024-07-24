@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  border: 2px solid purple;
 }
 
 /*De binnenste container is maximaal 1400px breed, zodat het er ook goed uitziet op brede schermen.
@@ -22,6 +23,7 @@ Hij mag krimpen als het scherm minder breed wordt, maar niet groeien als er meer
   flex-basis: 1400px;
   flex-shrink: 1;
   flex-grow: 0;
+  border: 2px dashed orange;
 }
 
 .inner-content-container__text-restriction {
@@ -47,3 +49,37 @@ Hij mag krimpen als het scherm minder breed wordt, maar niet groeien als er meer
   padding: 32px 0;
   font-weight: 600;
 }
+/*
+
+.image-wrapper  {
+!*  position: relative;*!
+  flex-basis: 150px;
+  flex-grow: 0;
+  flex-shrink: 1;
+!*  overflow: hidden;*!
+  border: 2px solid green;
+}
+
+.image-wrapper img {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: auto;
+!*  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);*!
+
+}
+
+.image-background {
+  width: 500px;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.object-fit {
+  width: 500px;
+  height: 250px;
+  object-fit:cover;
+}*/

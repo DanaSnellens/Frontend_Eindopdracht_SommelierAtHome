@@ -12,17 +12,20 @@ import NewWinePage from './pages/newWinePage/NewWinePage.jsx';
 import NotFound from './pages/notFoundPage/NotFoundPage.jsx';
 
 import Navigation from './components/navigation/Navigation.jsx';
+import LogoHeader from './components/logoHeader/LogoHeader.jsx';
 import Footer from './components/footer/Footer.jsx';
 
 import './App.css'
+import OverviewRecipesPage from "./pages/overviewRecipesPage/OverviewRecipesPage.jsx";
+
+
 
 function App() {
-
-
     return (
         <>
             <header>
                 <Navigation/>
+                <LogoHeader/>
             </header>
             <main>
 
@@ -31,7 +34,7 @@ function App() {
                     <Route path="about" element={<AboutUsPage/>}/>
                     <Route path="/wines" element={<OverviewWinesPage/>}/>
                     <Route path="/wines/:id" element={<WineDetailPage/>}/>
-                    <Route path="/recipes" element={<AboutUsPage/>}/>
+                    <Route path="/recipes" element={<OverviewRecipesPage/>}/>
                     <Route path="/recipes/:id" element={<RecipeDetailPage/>}/>
                     <Route path="/advice" element={<PersonalAdvicePage/>}/>
                     <Route path="/sommeliers" element={<SommeliersPage/>}/>

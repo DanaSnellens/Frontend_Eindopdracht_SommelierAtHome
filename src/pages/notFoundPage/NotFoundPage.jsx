@@ -1,4 +1,4 @@
-//import styles from './NotFound.css';
+import './NotFoundPage.css';
 import {useNavigate} from 'react-router-dom';
 import Button from '../../components/button/Button.jsx';
 

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "https://img.static-rmg.be/a/view/q75/w480/h360/2367861/feestelijke-voorgerechten-met-bladerdeeg-jpg.jpg",
+    "name": "Krokante lekkernij",
+    "course": "voorgerecht",
+    "mainIngredient": "kip",
+    "otherIngredients": ["bieslook", "room", "citroen"],
+    "difficulty": "gemakkelijk",
+    "preparationTime": "30 minuten",
+    "cookingTime": "20 minuten",
+    "description": "Een krokante lekkernij met kip, bieslook, room en citroen. Dit gerecht is gemakkelijk te bereiden en staat binnen 50 minuten op tafel.",
+  },
+  {
+    "id": 2,
+    "image": "https://img.static-rmg.be/a/view/q75/w480/h360/2367861/feestelijke-voorgerechten-met-bladerdeeg-jpg.jpg",
+    "name": "Krokante lekkernij",
+    "course": "voorgerecht",
+    "mainIngredient": "kip",
+    "otherIngredients": ["bieslook", "room", "citroen"],
+    "difficulty": "gemakkelijk",
+    "preparationTime": "30 minuten",
+    "cookingTime": "20 minuten",
+    "description": "Een krokante lekkernij met kip, bieslook, room en citroen. Dit gerecht is gemakkelijk te bereiden en staat binnen 50 minuten op tafel."
+  }
+]
