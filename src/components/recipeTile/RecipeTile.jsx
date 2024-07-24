@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-function RecipeTile( {id, image, name, course, mainIngredient, otherIngredients, difficulty, preparationTime, cookingTime, description} ) {
+function RecipeTile( {id, image, name, course, mainIngredient, otherIngredients, difficulty, preparationTime, cookingTime, shortDescription} ) {
     return (
         <article className="recipe-tile">
             <img className="recipe-image" alt="Afbeelding recept" src={image}/>
@@ -10,7 +10,8 @@ function RecipeTile( {id, image, name, course, mainIngredient, otherIngredients,
             <p>{otherIngredients}</p>
             <p>{difficulty} </p>
             <p>{preparationTime}</p>
-            <p>Korte beschrijving</p>
+            <p>{cookingTime}</p>
+            <p>{shortDescription}</p>
         </article>
     )
 }
