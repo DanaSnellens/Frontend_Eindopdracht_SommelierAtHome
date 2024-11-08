@@ -1,12 +1,13 @@
 import React, {useState} from "react";
-import wines from '../../constants/wines.json';
+/*import wines from '../../constants/wines.json';*/
 
 import WineTile from '../../components/wineTile/WineTile.jsx';
 
 import './OverviewWinesPage.css';
+import useWines from "../../hooks/useWines.js";
 function OverviewWinesPage() {
-    const [getWinesList, setWinesList] = useState(false);
-    const {wines} = getWinesList;
+    const [getAllWines/*, setGetAllWines*/] = useState(false)
+    const {wines} = useWines('http://localhost:8080/wines', getAllWines);
     return (
         <>
             <section className="overview-wines-section outer-content-container">
@@ -18,7 +19,8 @@ function OverviewWinesPage() {
                             return <WineTile
                                 key={wine.id}
                                 id={wine.id}
-                                image={wine.image}
+                                imageAlt={wine.imageAlt}
+                                imageLink={wine.imageLink}
                                 name={wine.name}
                                 grapeVarietal={wine.grapeVarietal}
                                 country={wine.country}
