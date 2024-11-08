@@ -6,10 +6,11 @@ import RecipeDetailPage from './pages/recipeDetailPage/RecipeDetailPage.jsx';
 import WineDetailPage from './pages/wineDetailPage/WineDetailPage.jsx';
 import AboutUsPage from './pages/aboutUsPage/AboutUsPage.jsx';
 import PersonalAdvicePage from './pages/personalAdvicePage/PersonalAdvicePage.jsx';
-import SommeliersPage from './pages/sommeliersPage/SommeliersPage.jsx';
+import OverviewSommeliersPage from './pages/overviewSommeliersPage/OverviewSommeliersPage.jsx';
 import NewRecipePage from './pages/newRecipePage/NewRecipePage.jsx';
 import NewWinePage from './pages/newWinePage/NewWinePage.jsx';
 import NotFound from './pages/notFoundPage/NotFoundPage.jsx';
+import SommelierDetailPage from './pages/sommelierDetailPage/SommelierDetailPage.jsx';
 
 import Navigation from './components/navigation/Navigation.jsx';
 import LogoHeader from './components/logoHeader/LogoHeader.jsx';
@@ -37,7 +38,8 @@ function App() {
                     <Route path="/recipes" element={<OverviewRecipesPage/>}/>
                     <Route path="/recipes/:id" element={<RecipeDetailPage/>}/>
                     <Route path="/advice" element={<PersonalAdvicePage/>}/>
-                    <Route path="/sommeliers" element={<SommeliersPage/>}/>
+                    <Route path="/sommeliers" element={<OverviewSommeliersPage/>}/>
+                    <Route path="/sommeliers/:id" element={<SommelierDetailPage/>}/>
                     <Route path="/newwine" element={<NewWinePage/>}/>
                     <Route path="/newrecipe" element={<NewRecipePage/>}/>
                     <Route path="*" element={<NotFound/>}/>

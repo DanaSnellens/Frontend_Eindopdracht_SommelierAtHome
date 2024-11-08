@@ -1,14 +1,15 @@
-/*.overview-wines-section {
+.section-sommeliers {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
     padding: 40px 0;
-}*/
+}
 
 .overview-wines-div{
     padding: 0;
 }
-.overview-wines-list {
+.overview-sommeliers-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

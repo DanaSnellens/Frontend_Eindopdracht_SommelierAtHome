@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import './RecipeTile.css';
 
 function RecipeTile( {id, image, name, course, mainIngredient, otherIngredients, difficulty, preparationTime, cookingTime, shortDescription} ) {
     return (

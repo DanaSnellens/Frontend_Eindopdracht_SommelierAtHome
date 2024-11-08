@@ -2,6 +2,7 @@ import recipes from "../../constants/recipes.json";
 
 import React from "react";
 import RecipeTile from "../../components/recipeTile/RecipeTile.jsx";
+import './OverviewRecipesPage.css'
 
 function OverviewRecipesPage() {
     return (
