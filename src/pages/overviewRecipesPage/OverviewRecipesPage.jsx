@@ -1,6 +1,5 @@
-import recipes from "../../constants/recipes.json";
-
-import React, {useState} from "react";
+// Dependencies
+import {useState} from "react";
 import RecipeTile from "../../components/recipeTile/RecipeTile.jsx";
 import './OverviewRecipesPage.css'
 import useRecipes from "../../hooks/useRecipes.js";
