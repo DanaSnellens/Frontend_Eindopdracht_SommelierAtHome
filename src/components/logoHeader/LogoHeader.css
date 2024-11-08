@@ -1,0 +1,9 @@
+
+.logo-header {
+    display: block;
+    flex-basis: 450px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    justify-self: center;
+
+}

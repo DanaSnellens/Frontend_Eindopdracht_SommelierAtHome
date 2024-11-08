@@ -1,0 +1,135 @@
+
+[
+  {
+    "id": 1,
+    "image" : "https://media.gettyimages.com/id/172930332/photo/wine-bottle.jpg?s=612x612&w=0&k=20&c=0TMaKCz48atzLh7Rxr3CIPBM0Bb4r8rg4sI7Gb2v-8k=",
+    "name" : "Bla",
+    "grapeVarietal" : "Pinot Noir",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "vintage": 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "foodPairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... "
+
+  },
+
+  {
+    "id": 2,
+    "image" : "https://media.gettyimages.com/id/172930332/photo/wine-bottle.jpg?s=612x612&w=0&k=20&c=0TMaKCz48atzLh7Rxr3CIPBM0Bb4r8rg4sI7Gb2v-8k=",
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "vintage": 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "foodPairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... "
+  },
+  {
+    "id": 3,
+    "image" : "https://media.gettyimages.com/id/172930332/photo/wine-bottle.jpg?s=612x612&w=0&k=20&c=0TMaKCz48atzLh7Rxr3CIPBM0Bb4r8rg4sI7Gb2v-8k=",
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "vintage": 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "foodPairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... "
+
+  },
+
+  {
+    "id": 4,
+    "image" : "https://media.gettyimages.com/id/172930332/photo/wine-bottle.jpg?s=612x612&w=0&k=20&c=0TMaKCz48atzLh7Rxr3CIPBM0Bb4r8rg4sI7Gb2v-8k=",
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "vintage": 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "foodPairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... "
+
+  },
+
+  {
+    "id": 5,
+    "image" : "https://media.gettyimages.com/id/172930332/photo/wine-bottle.jpg?s=612x612&w=0&k=20&c=0TMaKCz48atzLh7Rxr3CIPBM0Bb4r8rg4sI7Gb2v-8k=",
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "vintage": 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "foodPairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... "
+
+  },
+
+  {
+    "id": 6,
+    "image" : "https://media.gettyimages.com/id/172930332/photo/wine-bottle.jpg?s=612x612&w=0&k=20&c=0TMaKCz48atzLh7Rxr3CIPBM0Bb4r8rg4sI7Gb2v-8k=",
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "vintage": 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "foodPairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... "
+
+  },
+  {
+    "id": 7,
+    "image" : "https://media.gettyimages.com/id/172930332/photo/wine-bottle.jpg?s=612x612&w=0&k=20&c=0TMaKCz48atzLh7Rxr3CIPBM0Bb4r8rg4sI7Gb2v-8k=",
+    "name" : "Bla",
+    "grapeVarietal" : "Chardonnay",
+    "country" : "Frankrijk",
+    "region" : "Bla",
+    "producer" : "Bla",
+    "vintage": 2020,
+    "maturationStyle" : "Bepaald soort vaten",
+    "wineStyle" : "Licht",
+    "typeOfWine" : "Rood",
+    "aromas" : ["Bla", "bliep", "blob"],
+    "foodPairing" : "Salade, gevogelte, ",
+    "shortDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden.",
+    "longDescription" : "Lichte rode wijn, geweldig voor vele gelegenheden. Deze wijnmaker..... Dit gebied...... "
+
+  }
+
+
+
+]
