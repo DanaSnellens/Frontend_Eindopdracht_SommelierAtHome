@@ -11,7 +11,6 @@ function OverviewWinesPage() {
     return (
         <>
             <section className="overview-wines-section outer-content-container">
-
                 <div className="overview-wines-div inner-content-container">
                     <h1>Our wines</h1>
                     <ul className= "overview-wines-list">
