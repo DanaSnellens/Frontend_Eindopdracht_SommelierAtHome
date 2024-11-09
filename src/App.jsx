@@ -18,6 +18,7 @@ import Footer from './components/footer/Footer.jsx';
 
 import './App.css'
 import OverviewRecipesPage from "./pages/overviewRecipesPage/OverviewRecipesPage.jsx";
+import SignInPage from "./pages/signInPage/SignInPage.jsx";
 
 
 
@@ -42,6 +43,7 @@ function App() {
                     <Route path="/sommeliers/:id" element={<SommelierDetailPage/>}/>
                     <Route path="/newwine" element={<NewWinePage/>}/>
                     <Route path="/newrecipe" element={<NewRecipePage/>}/>
+                    <Route path="/authenticate" element={<SignInPage/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </main>

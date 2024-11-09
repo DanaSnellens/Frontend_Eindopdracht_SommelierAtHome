@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 /*import wines from '../../constants/wines.json';*/
 
 import WineTile from '../../components/wineTile/WineTile.jsx';
@@ -20,7 +20,7 @@ function OverviewWinesPage() {
                                 id={wine.id}
                                 imageAlt={wine.imageAlt}
                                 imageLink={wine.imageLink}
-                                name={wine.name}
+                                wineName={wine.wineName}
                                 grapeVarietal={wine.grapeVarietal}
                                 country={wine.country}
                                 shortDescription={wine.shortDescription}

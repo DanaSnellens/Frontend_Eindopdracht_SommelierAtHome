@@ -1,7 +1,8 @@
 // Dependencies
+import './OverviewRecipesPage.css';
+
 import {useState} from "react";
 import RecipeTile from "../../components/recipeTile/RecipeTile.jsx";
-import './OverviewRecipesPage.css'
 import useRecipes from "../../hooks/useRecipes.js";
 
 function OverviewRecipesPage() {
