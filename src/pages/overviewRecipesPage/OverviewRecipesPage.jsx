@@ -6,8 +6,10 @@ import RecipeTile from "../../components/recipeTile/RecipeTile.jsx";
 import useRecipes from "../../hooks/useRecipes.js";
 
 function OverviewRecipesPage() {
-    const [getAllRecipes/*, setGetAllRecipes*/] = useState(false)
-    const {recipes} = useRecipes('http://localhost:8080/recipes', getAllRecipes);
+/*
+    const [getAllRecipes/!*, setGetAllRecipes*!/] = useState(false)
+*/
+    const {recipes} = useRecipes('http://localhost:8080/recipes'/*, getAllRecipes*/);
     return (
         <>
             <section className="overview-recipes-section outer-content-container">

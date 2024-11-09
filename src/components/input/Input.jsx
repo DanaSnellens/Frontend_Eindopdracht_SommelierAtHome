@@ -1,19 +1,18 @@
 import './Input.css';
 
-function Input({ labelText, name, handleChange, required, type, formStateValue }) {
-    const labelInputLink = `wine-${name}`;
+function Input({ name, inputType, labelText, validationRules, register, errors }) {
 
     return (
         <>
-            <label htmlFor={labelInputLink}>{labelText}</label>
-            <input
-                type={type}
-                id={labelInputLink}
-                name={name}
-                required={required}
-                value={formStateValue}
-                onChange={handleChange}
-            />
+            <label htmlFor={`${name}-field`}>
+                {labelText}
+                <input
+                    type={inputType}
+                    id={`${name}-field`}
+                    {...register(name, validationRules)}
+                />
+            </label>
+            {errors[name] && <p className="error-message">{errors[name].message}</p>}
         </>
     );
 }
