@@ -1,4 +1,4 @@
-function NewRecipePage(){
+function AddNewPage(){
     return (
         <>
 
@@ -11,4 +11,4 @@ function NewRecipePage(){
         </>
     )
 }
-export default NewRecipePage;
+export default AddNewPage;

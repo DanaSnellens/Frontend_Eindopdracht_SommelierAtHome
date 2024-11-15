@@ -1,3 +1,5 @@
+import Input from "../../components/input/Input.jsx";
+
 function SignUpPage() {
 
 /*    const[username, setUsername] = useState("");

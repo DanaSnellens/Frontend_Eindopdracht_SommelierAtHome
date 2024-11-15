@@ -15,7 +15,7 @@ function PersonalAdvicePage(){
 
                     <p>Om een verzoek in te dienen voor persoonlijk wijnadvies heeft u een account nodig</p>
                     <p>Klik <Link to={'/register'}>hier</Link> om een account aan te maken. Heeft u al een account?
-                        Dan kunt u <Link to={'/authenticate'}>hier</Link> inloggen.</p>
+                        Dan kunt u <Link to={'/signin'}>hier</Link> inloggen.</p>
 
 
 

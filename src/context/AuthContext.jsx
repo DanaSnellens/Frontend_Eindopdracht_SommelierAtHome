@@ -1,123 +1,104 @@
-import React, {createContext, useEffect, useState} from 'react';
-import jwtDecode from 'jwt-decode';
+import { createContext, useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import * as controller from "react-dom/test-utils";
 
 export const AuthContext = createContext({});
 
 function AuthContextProvider({ children }) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
-        user: {
-            role: "",
-        },
+        user: null,
         status: 'pending',
     });
+    const navigate= useNavigate();
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if (token !== null) {
+        if (token) {
             const decoded = jwtDecode(token);
-
-            void fetchUserData(decoded.sub, token)
+            const roles = decoded.roles.map((role) => role.authority.replace('ROLE_', ''));
+            void fetchUserData(decoded.sub, roles, token);
         } else {
+            console.error("Token not found in localStorage on page load");
             toggleIsAuth({
                 isAuth: false,
-                user: {
-                    role: "",
-                },
+                user: null,
                 status: 'done',
             });
         }
-    }, []);
-    const navigate = useNavigate();
+    }, [] );
+    console.log(isAuth);
 
-    async function login(JWT) {
+    function login (JWT) {
         localStorage.setItem('token', JWT);
-
-        if (JWT !== null) {
-            const decoded = jwtDecode(JWT);
-            await void fetchUserData(decoded.sub, JWT);
-        }
-        console.log('Gebruiker is ingelogd!');
+        const decoded = jwtDecode(JWT);
+        const roles = decoded.roles.map((role) => role.authority.replace('ROLE_', ''));
+        void fetchUserData(decoded.sub, roles, JWT, '/dashboard');
     }
-
-    function logout() {
+    console.log(isAuth);
+    function logout () {
         localStorage.clear();
-        console.log('Gebruiker is uitgelogd!');
         toggleIsAuth({
             isAuth: false,
-            user: {
-                role: "",
-            },
+            user: null,
             status: 'done',
         });
+
+        console.log('Gebruiker is uitgelogd!');
         navigate('/');
     }
 
-    const contextData = {
-        isAuth: isAuth,
-        login: login,
-        logout: logout,
-        role: localStorage.getItem('user_role'),
-        fetchUserData: fetchUserData,
-    };
+    async function fetchUserData(username, roles, token, redirectUrl) {
+        const rolePath = roles.includes('ADMIN') ? 'sommeliers' : 'clients';
 
-    async function fetchUserData(userId, token) {
         try {
-            const userRole = localStorage.getItem('user_role');
-            let response;
+            const response = await axios.get(`http://localhost:8080/${rolePath}/${username}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
 
-            if (userRole === 'ROLE_CLIENT') {
-                response = await axios.get(`http://localhost:8080/clients/${userId}`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                navigate('/clients/dashboard');
-            } else if (userRole === 'ROLE_SOMMELIER') {
-                response = await axios.get(`http://localhost:8080/sommeliers/${userId}`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                navigate('/sommeliers/dashboard');
-            }
+            console.log("User data:", response.data);
 
-            localStorage.setItem('user_username', response.data.username);
-            localStorage.setItem('user_role', response.data.role);
-            localStorage.setItem('loggedIn', "true");
 
             toggleIsAuth({
+                ...isAuth,
                 isAuth: true,
                 user: {
-                    role: response.data.role,
+                    username: response.data.username,
+                    roles: roles,
                 },
                 status: 'done',
             });
 
+            if (redirectUrl) {
+                navigate(redirectUrl);
+            }
+
         } catch (e) {
-            console.error(e);
-            localStorage.clear();
-            console.log('Gebruiker is uitgelogd!');
+            console.error("No user found with this username", e);
+
             toggleIsAuth({
                 isAuth: false,
-                user: {
-                    role: "",
-                },
+                user: null,
                 status: 'done',
             });
-            navigate('/');
         }
     }
 
+    const contextData ={
+        ...isAuth,
+        login,
+        logout
+    };
 
     return (
         <AuthContext.Provider value={contextData}>
-            { (isAuth.status === 'done') && children }
-            { (isAuth.status === 'pending') && <p>Loading...</p> }
+            { isAuth.status === 'done' ? children : <p>Loading...</p> }
         </AuthContext.Provider>
     );
 }

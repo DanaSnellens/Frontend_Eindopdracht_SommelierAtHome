@@ -16,7 +16,7 @@ function Navigation() {
                     <li><Link to="/recipes">Recipes</Link></li>
                     <li><Link to="/advice">Personal Advice </Link></li>
                     <li><Link to="/sommeliers">Our Sommeliers</Link></li>
-                    <li><Link to="/authenticate">Sign In</Link></li>
+                    <li><Link to="/signin">Sign In</Link></li>
                 </ul>
             </div>
         </nav>

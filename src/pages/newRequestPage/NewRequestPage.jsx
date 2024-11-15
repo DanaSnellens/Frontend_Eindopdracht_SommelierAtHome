@@ -39,8 +39,6 @@ function NewRequestPage () {
                     errors={errors}
                 />
 
-
-
                 <Button type="submit" text="Bevestigen" />
             </form>
 
