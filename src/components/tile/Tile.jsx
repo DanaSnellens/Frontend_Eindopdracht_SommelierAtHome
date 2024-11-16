@@ -23,11 +23,12 @@ function Tile ( {type, data} ) {
         specialities,
         experience,
         email,
-        membership
+        membership,
+        wineAdviceRequestIdSet
     } = data;
     return (
         <article className={`${type}-tile`}>
-            {type === 'recipe' && (
+            {type === 'recipes' && (
                 <>
                     <img className={`${type}-image`} alt={imageAlt} src={imageLink} />
                     <h2 className={`${type}-name`} >
@@ -42,7 +43,7 @@ function Tile ( {type, data} ) {
                 </>
             )}
 
-            {type === 'wine' && (
+            {type === 'wines' && (
                 <>
                     <img className={`${type}-image`} alt={imageAlt} src={imageLink} />
                     <h2 className={`${type}-name`}>
@@ -55,7 +56,7 @@ function Tile ( {type, data} ) {
                 </>
             )}
 
-            {type === 'sommelier' && (
+            {type === 'sommeliers' && (
                 <>
                     <span className="avatar-image-wrapper">
                         <img className={`${type}-image`} alt="Photo of sommelier" src={profilePictureUrl} />
@@ -69,7 +70,7 @@ function Tile ( {type, data} ) {
                 </>
             )}
 
-            {type === 'client' && (
+            {type === 'clients' && (
                 <>
                     <span className="avatar-image-wrapper">
                         <img className={`${type}-image`} alt="Photo of client" src={profilePictureUrl} />
@@ -79,7 +80,10 @@ function Tile ( {type, data} ) {
                     </h2>
                     <h4>{email}</h4>
                     <h5><em>{membership}</em></h5>
+
+                    <p>Requests: {wineAdviceRequestIdSet}</p>
                 </>
+                //TODO requests scheiden door kommas en/of in buttons met links(naar request) zetten + link naar advices
             )}
         </article>
     );

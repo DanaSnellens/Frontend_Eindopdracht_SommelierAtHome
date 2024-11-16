@@ -1,0 +1,18 @@
+.tile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.page-title {
+    text-align: center;
+    margin: 1rem;
+}
+
+.recipes-tile, .wines-tile, .sommeliers-tile, .clients-tile {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #fff;
+}

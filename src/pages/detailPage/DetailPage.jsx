@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 
+//TODO const aanpassen naar function???
 const DetailPage = ({ type }) => {
 
     const { id } = useParams();
@@ -18,6 +19,7 @@ const DetailPage = ({ type }) => {
                 console.error("Error fetching data:", error);
             }
         };
+        console.log(detailData);
         fetchData();
     }, [type, id]);
 
@@ -70,8 +72,8 @@ const DetailPage = ({ type }) => {
         <>
             <section className="detail-page outer-content-container">
                 <div className="inner-content-container">
-                    <h2>{sommelier.name}</h2>
                     {renderDetailContent}
+
                 </div>
             </section>
         </>

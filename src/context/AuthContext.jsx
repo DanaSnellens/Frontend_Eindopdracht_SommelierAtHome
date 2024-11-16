@@ -76,6 +76,7 @@ function AuthContextProvider({ children }) {
             });
 
             if (redirectUrl) {
+                //TODO message en timer toevoegen net als bij overviewPage
                 navigate(redirectUrl);
             }
 
@@ -92,9 +93,11 @@ function AuthContextProvider({ children }) {
 
     const contextData ={
         ...isAuth,
+        roles: isAuth.user ? isAuth.user.roles : [],
         login,
         logout
     };
+    console.log(contextData);
 
     return (
         <AuthContext.Provider value={contextData}>

@@ -8,35 +8,20 @@ function DashboardPage() {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-/*    useEffect(() => {
-        async function fetchDashboardData() {
-            const token = localStorage.getItem('token');
-
-            try {
-                const response = await axios.get(`http://localhost:8080/dashboard`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                setDashboardData(response.data);
-                }
-            }
-        }
-    }, []);*/
     const sommelierButtons = [
-        { index: 1, text: "Wijn toevoegen", type: "wines", onClick: () => navigate(`http://localhost:8080/wines/addnew`) },
-        { index: 2, text: "Recept toevoegen", onClick: () => console.log("Recept toevoegen clicked") },
-        { index: 3, text: "Sommelier toevoegen", onClick: () => console.log("Sommelier toevoegen clicked") },
-        { index: 4, text: "Overzicht requests wijnadvies", onClick: () => console.log("Overzicht requests clicked") },
-        { index: 5, text: "Overzicht klanten", onClick: () => console.log("Overzicht klanten clicked") }
+        { index: 1, text: "Wijn toevoegen", onClick: () => navigate(`/wines/addnew`) },
+        { index: 2, text: "Recept toevoegen", onClick: () => navigate(`/recipes/addnew`)},
+        { index: 3, text: "Sommelier toevoegen", onClick: () => navigate(`sommeliers/addnew`)},
+        { index: 4, text: "Overzicht requests wijnadvies", onClick: () => navigate(`requests`) },
+        { index: 5, text: "Overzicht klanten", onClick: () => navigate(`/clients`) }
     ];
 
     const clientButtons = [
-        { index: 1, text: "Nieuw wijnadvies aanvragen", onClick: () => console.log("Nieuw wijnadvies aanvragen clicked") },
-        { index: 2, text: "Status huidig advies", onClick: () => console.log("Status huidig advies clicked") },
-        { index: 3, text: "Stuur sommelier bericht", onClick: () => console.log("Stuur sommelier bericht clicked") }
+        { index: 1, text: "Nieuw wijnadvies aanvragen", onClick: () => navigate(`/wineadvicerequests/addnew`) },
+        { index: 2, text: "Status huidig advies", onClick: () => navigate(`/requests`) },
+        { index: 3, text: "Stuur sommelier bericht", onClick: () => navigate(`/message`) }
     ];
+
 
     return (
         <>
@@ -65,7 +50,6 @@ function DashboardPage() {
                             </Button>
                         ))}
                     </div>
-
                 </div>
             </section>
         </>
