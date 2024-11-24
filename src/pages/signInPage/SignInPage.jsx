@@ -71,7 +71,9 @@ function SignInPage() {
                                 className="primary"
                                 buttonText="Sign In"
                                 onClick={handleFormSubmit}
-                            />
+                            >Login
+                            </Button>
+
                             <p>Klik <Link to={'/register'}>hier</Link> om te registreren</p>
                         </form>
                     </div>

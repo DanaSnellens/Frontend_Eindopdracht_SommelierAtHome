@@ -30,6 +30,7 @@ function DetailPage() {
     };
 
     useEffect(() => {
+
         if (!hasPermission()) {
             setError("Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.");
             setTimeout(() => navigate('/signin'), 3000);
@@ -47,7 +48,7 @@ function DetailPage() {
         };
         console.log(data);
         fetchData();
-    }, [type, id, navigate]);
+    }, []);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;

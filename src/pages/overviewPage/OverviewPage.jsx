@@ -7,10 +7,10 @@ import './OverviewPage.css';
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 function OverviewPage() {
-    const { type, username } = useParams();
+    const { type } = useParams();
     const navigate = useNavigate();
-    const { user, isAuth } = useContext(AuthContext);
-    const [overviewData, setOverviewData] = useState([]);
+    const { user, isAuth, username } = useContext(AuthContext);
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -32,35 +32,29 @@ function OverviewPage() {
     };
 
     useEffect(() => {
-        const source = axios.CancelToken.source();
+
         if (!hasPermission()) {
             setError("Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.");
             setTimeout(() => navigate('/signin'), 3000);
             return;
         }
 
-        async function fetchOverviewData() {
-            const token = localStorage.getItem('token');
-
+        const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/${type}`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    cancelToken: source.token,
-                });
-                setOverviewData(response.data);
+                const response = await axios.get(`http://localhost:8080/${type}`);
+                setData(response.data);
             } catch (error) {
                 setError(error.message);
+            } finally {
+                setLoading(false);
             }
-        }
+        };
 
-        void fetchOverviewData();
-    }, [/*type, username, navigate*/]);
-/*
+        fetchData();
+    }, []);
+
     if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;*/
+    if (error) return <p>{error}</p>;
 
     return (
         <>
@@ -68,7 +62,7 @@ function OverviewPage() {
                 <div className="overview-page inner-content-container">
                     <h1 className="page-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h1>
                     <div className="tile-container">
-                        {overviewData.map((item) => (
+                        {data.map((item) => (
                             <Tile key={item.id || item.username} type={type} data={item} />
                         ))}
                     </div>
