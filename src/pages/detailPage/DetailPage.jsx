@@ -1,83 +1,66 @@
 import './DetailPage.css';
-import sommelier from '../../constants/sommeliers.json';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext.jsx";
+import DetailCard from "../../components/detailCard/DetailCard.jsx";
 
-//TODO const aanpassen naar function???
-const DetailPage = ({ type }) => {
+function DetailPage() {
+    const { type, id } = useParams();
+    const { isAuth, user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    const { id } = useParams();
-    const [detailData, setDetailData] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`/http://localhost:8080/${type}/${id}`);
-                setDetailData(response.data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-        console.log(detailData);
-        fetchData();
-    }, [type, id]);
-
-    if (!detailData) return <p>Loading...</p>;
-
-    const renderDetailContent = () => {
+    const hasPermission = () => {
         switch (type) {
-            case 'wines':
-                return (
-                    <div>
-                        <h2>Wine Details</h2>
-                        <p>Name: {detailData.name}</p>
-                        <p>Type: {detailData.type}</p>
-                        <p>Year: {detailData.year}</p>
-                    </div>
-                );
-            case 'recipes':
-                return (
-                    <div>
-                        <h2>Recipe Details</h2>
-                        <p>Title: {detailData.title}</p>
-                        <p>Description: {detailData.description}</p>
-                        <p>Ingredients: {detailData.mainIngredients.join(', ')}</p>
-                    </div>
-                );
             case 'sommeliers':
-                return (
-                    <div>
-                        <h2>Sommelier Details</h2>
-                        <p>Name: {detailData.name}</p>
-                        <p>Experience: {detailData.experience}</p>
-                        <p>Specialty: {detailData.specialty}</p>
-                    </div>
-                );
-            case 'clients':
-                return (
-                    <div>
-                        <h2>Client Details</h2>
-                        <p>Username: {detailData.username}</p>
-                        <p>Email: {detailData.email}</p>
-                        <p>Subscription: {detailData.subscription}</p>
-                    </div>
-                );
+            case 'wines' :
+            case 'recipes' :
+                return true;
+            case 'clients' :
+                if (isAuth) {
+                    return user.roles.includes('ADMIN') || user.username === id;
+                }
+                return false;
             default:
-                return <p>Invalid detail type</p>;
+                return false;
         }
     };
+
+    useEffect(() => {
+        if (!hasPermission()) {
+            setError("Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.");
+            setTimeout(() => navigate('/signin'), 3000);
+            return;
+        }
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/${type}/${id}`);
+                setData(response.data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        console.log(data);
+        fetchData();
+    }, [type, id, navigate]);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
+
 
     return (
         <>
             <section className="detail-page outer-content-container">
-                <div className="inner-content-container">
-                    {renderDetailContent}
-
+                <div className="detail-page inner-content-container">
+                    <DetailCard type={type} data={data} />
                 </div>
             </section>
         </>
-
     );
 }
 export default DetailPage;

@@ -29,13 +29,12 @@ function App() {
                 <LogoHeader/>
             </header>
             <main>
-
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/about" element={<AboutUsPage/>}/>
 {/*                    <Route path="/wines" element={<OverviewWinesPage/>}/>
                     <Route path="/recipes" element={<OverviewRecipesPage/>}/>*/}
-                    <Route path="/:type/:id" element={<DetailPage type="wines" />} />
+                    <Route path="/:type/:id" element={<DetailPage/>} />
 {/*                    <Route path="/recipes/:id" element={<DetailPage type="recipes" />} />
                     <Route path="/sommeliers/:id" element={<DetailPage type="sommeliers" />} />
                     <Route path="/clients/:id" element={<DetailPage type="clients" />} />*/}

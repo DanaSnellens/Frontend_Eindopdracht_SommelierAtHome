@@ -1,0 +1,34 @@
+.detail-card {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+/*    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);*/
+}
+
+.detail-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.detail-card p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.detail-card.sommelier {
+    border-left: 5px solid #4a90e2; /* Example color for sommeliers */
+}
+
+.detail-card.client {
+    border-left: 5px solid #f39c12; /* Example color for clients */
+}
+
+.detail-card.wine {
+    border-left: 5px solid #27ae60; /* Example color for wines */
+}
+
+.detail-card.recipe {
+    border-left: 5px solid #8e44ad; /* Example color for recipes */
+}
