@@ -34,14 +34,21 @@ function OverviewPage() {
     useEffect(() => {
 
         if (!hasPermission()) {
-            setError("Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.");
+            setError(true);
             setTimeout(() => navigate('/signin'), 3000);
             return;
         }
 
-        const fetchData = async () => {
+        async function fetchData (){
+            const token = localStorage.getItem('token');
+
             try {
-                const response = await axios.get(`http://localhost:8080/${type}`);
+                const response = await axios.get(`http://localhost:8080/${type}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
                 setData(response.data);
             } catch (error) {
                 setError(error.message);
@@ -53,6 +60,7 @@ function OverviewPage() {
         fetchData();
     }, []);
 
+
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
@@ -60,6 +68,7 @@ function OverviewPage() {
         <>
             <section className={`${type}-overview outer-content-container`}>
                 <div className="overview-page inner-content-container">
+                    {error && <p className="error">Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.</p>}
                     <h1 className="page-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h1>
                     <div className="tile-container">
                         {data.map((item) => (
