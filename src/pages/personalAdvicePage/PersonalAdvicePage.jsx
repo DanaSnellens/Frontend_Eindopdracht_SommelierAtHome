@@ -7,7 +7,7 @@ function PersonalAdvicePage(){
         <>
             <section className="section-personal-advice outer-content-container">
                 <div className="inner-content-container__text-restriction">
-                    <h1>Personal Wineadvice</h1>
+                    <h1>Wineadvice</h1>
                     <p>Somm@Home kan u voorzien van passend wijnadvies bij uw diner. Vul het formulier in of upload uw recept en onze sommeliers voorzien u van een passende wijn bij elke gang.</p>
                     <p>U ontvangt een advies per gang met een uitgebreide beschrijving.</p>
                     <p>Wilt u de wijn ook bestellen? Dat kan! Wij bezorgen de wijn bij u thuis.</p>

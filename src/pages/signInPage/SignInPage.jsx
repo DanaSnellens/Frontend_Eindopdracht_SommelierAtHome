@@ -17,7 +17,7 @@ function SignInPage() {
 
     useEffect(() => {
         return function cleanup() {
-            source.cancel('Operation canceled.');
+/*            source.cancel('Operation canceled.');*/
         }
     }, []);
 
@@ -63,7 +63,7 @@ function SignInPage() {
                                 register={register}
                                 errors={errors}
                             />
-                            {error && <p className="error">Combinatie van username en wachtwoord is onjuist</p>}
+                            {error && <p className="error">De combinatie van username en wachtwoord is onjuist</p>}
                             <Button
                                 type="submit"
 
@@ -71,7 +71,9 @@ function SignInPage() {
                                 className="primary"
                                 buttonText="Sign In"
                                 onClick={handleFormSubmit}
-                            />
+                            >Login
+                            </Button>
+
                             <p>Klik <Link to={'/register'}>hier</Link> om te registreren</p>
                         </form>
                     </div>

@@ -10,18 +10,20 @@ function Tile ( {type, data} ) {
         mainIngredient,
         otherIngredients,
         preparationTime,
-        shortDescription,
+        preparationShortDescription,
         wineName,
         grapeVarietal,
         country,
         foodPairing,
+        shortDescription,
         username,
         profilePictureUrl,
+        profilePictureAlt,
         firstName,
         lastName,
         certificates,
-        specialities,
-        experience,
+        specialization,
+        experienceInYears,
         email,
         membership,
         wineAdviceRequestIdSet
@@ -39,7 +41,7 @@ function Tile ( {type, data} ) {
                     <p>{otherIngredients}</p>
                     <h4><strong>Preparation time:</strong></h4>
                     <p>{preparationTime} minutes</p>
-                    <p>{shortDescription}</p>
+                    <p>{preparationShortDescription}</p>
                 </>
             )}
 
@@ -59,21 +61,21 @@ function Tile ( {type, data} ) {
             {type === 'sommeliers' && (
                 <>
                     <span className="avatar-image-wrapper">
-                        <img className={`${type}-image`} alt="Photo of sommelier" src={profilePictureUrl} />
+                        <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl} />
                     </span>
                     <h2 className={`${type}-name`}>
                         <Link to={`/sommeliers/${username}`}>{firstName} {lastName}</Link>
                     </h2>
-                    <h4>{certificates}</h4>
-                    <h5><em>{specialities}</em></h5>
-                    <p>{experience}</p>
+                    <h4>Certificaten: {certificates}</h4>
+                    <h5><em>Gespecialiseerd in: {specialization}</em></h5>
+                    <p>Ervaring: {experienceInYears} jaar</p>
                 </>
             )}
 
             {type === 'clients' && (
                 <>
                     <span className="avatar-image-wrapper">
-                        <img className={`${type}-image`} alt="Photo of client" src={profilePictureUrl} />
+                        <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl} />
                     </span>
                     <h2 className={`${type}-name`}>
                         <Link to={`/clients/${username}`}>{firstName} {lastName}</Link>

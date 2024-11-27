@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import isTokenValid from "../helpers/isTokenValid.js";
 
 
 export const AuthContext = createContext({});
@@ -9,7 +10,10 @@ export const AuthContext = createContext({});
 function AuthContextProvider({ children }) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
-        user: null,
+        user: {
+            username: '',
+            roles: [],
+        },
         status: 'pending',
     });
     const navigate= useNavigate();
@@ -17,10 +21,11 @@ function AuthContextProvider({ children }) {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if (token) {
+        if (token && isTokenValid(token)) {
             const decoded = jwtDecode(token);
             const roles = decoded.roles.map((role) => role.authority.replace('ROLE_', ''));
             void fetchUserData(decoded.sub, roles, token);
+            console.log(decoded.sub, roles, token);
         } else {
             console.error("Token not found in localStorage on page load");
             toggleIsAuth({
