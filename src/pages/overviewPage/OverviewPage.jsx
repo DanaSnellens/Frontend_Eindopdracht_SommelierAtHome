@@ -31,8 +31,6 @@ function OverviewPage() {
         }
     };
 
-    //test
-
     useEffect(() => {
 
         if (!hasPermission()) {
@@ -42,14 +40,20 @@ function OverviewPage() {
         }
 
         async function fetchData (){
-            const token = localStorage.getItem('token');
+            setLoading(true);
+            setError(false);
 
             try {
-                const response = await axios.get(`http://localhost:8080/${type}`, {
-                    headers: {
+                const config = {};
+                if (!['clients', 'wineadvicerequests'].includes(type)) {
+                    const token = localStorage.getItem('token');
+                    config.headers = {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
-                    },
+                    };
+                }
+
+                const response = await axios.get(`http://localhost:8080/${type}`, {
                 });
                 setData(response.data);
             } catch (error) {
@@ -57,20 +61,20 @@ function OverviewPage() {
             } finally {
                 setLoading(false);
             }
-        };
+        }
 
         void fetchData();
-    }, []);
+    }, [type]);
 
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+/*    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;*/
 
     return (
         <>
-            <section className={`${type}-overview outer-content-container`}>
+            <section className={`${type}-overview-section outer-content-container`}>
                 <div className="overview-page inner-content-container">
-                    {error && <p className="error">Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.</p>}
+{/*                    {error && <p className="error">Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.</p>}*/}
                     <h1 className="page-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h1>
                     <div className="tile-container">
                         {data.map((item) => (

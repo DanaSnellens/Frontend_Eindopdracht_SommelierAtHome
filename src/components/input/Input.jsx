@@ -1,4 +1,5 @@
 import './Input.css';
+import React from "react";
 
 function Input({ name, inputType, labelText, validationRules, register, errors }) {
 
@@ -10,6 +11,7 @@ function Input({ name, inputType, labelText, validationRules, register, errors }
                     type={inputType}
                     id={`${name}-field`}
                     {...register(name, validationRules)}
+                    className={errors[name] ? 'input-error' : ''}
                 />
             </label>
             {errors[name] && <p className="error-message">{errors[name].message}</p>}

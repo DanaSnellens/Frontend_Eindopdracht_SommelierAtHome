@@ -47,7 +47,7 @@ function DetailPage() {
             }
         };
         console.log(data);
-        fetchData();
+        void fetchData();
     }, []);
 
     if (loading) return <p>Loading...</p>;

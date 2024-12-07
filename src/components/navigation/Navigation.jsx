@@ -1,10 +1,7 @@
 
 import './Navigation.css';
-
-/*import Button from '../button/Button.jsx';*/
-import {Link/*, useNavigate*/} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 function Navigation() {
-/*    const navigate = useNavigate();*/
 
     return (
         <nav className=  "main-navigation outer-content-container">
