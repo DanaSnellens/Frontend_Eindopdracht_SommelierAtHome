@@ -55,6 +55,7 @@ function OverviewPage() {
 
                 const response = await axios.get(`http://localhost:8080/${type}`, {
                 });
+                console.log(response.data);
                 setData(response.data);
             } catch (error) {
                 setError(error.message);

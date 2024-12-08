@@ -36,12 +36,12 @@ function Tile ( {type, data} ) {
                     <h2 className={`${type}-name`} >
                         <Link to={`/recipes/${id}`}>{recipeName}</Link>
                     </h2>
-                    <h4>{course}</h4>
-                    <h5><em>{mainIngredient}</em></h5>
-                    <p>{otherIngredients}</p>
-                    <h4><strong>Preparation time:</strong></h4>
-                    <p>{preparationTime} minutes</p>
-                    <p>{preparationShortDescription}</p>
+                    <p><strong>Course: </strong> {course}</p>
+                    <p><strong>Main ingredient: </strong>{mainIngredient}</p>
+                    <p><strong>Other ingredients: </strong> {otherIngredients}</p>
+                    <p><strong>Preparation time: </strong>{preparationTime} min</p>
+                    <p><strong>Description: </strong></p>
+                    <p><em>{preparationShortDescription} </em></p>
                 </>
             )}
 
@@ -51,10 +51,10 @@ function Tile ( {type, data} ) {
                     <h2 className={`${type}-name`}>
                         <Link to={`/wines/${id}`}>{wineName}</Link>
                     </h2>
-                    <h4>{grapeVarietal}</h4>
-                    <h5><em>{country}</em></h5>
-                    <p>{shortDescription}</p>
-                    <p><strong><em>Food Pairing: </em></strong>{foodPairing}</p>
+                    <p><strong>Grapes: </strong> {grapeVarietal}</p>
+                    <p><strong>Country: </strong>{country}</p>
+                    <p><strong>Description: </strong>{shortDescription}</p>
+                    <p><strong>Food Pairing: </strong>{foodPairing}</p>
                 </>
             )}
 
@@ -66,9 +66,9 @@ function Tile ( {type, data} ) {
                     <h2 className={`${type}-name`}>
                         <Link to={`/sommeliers/${username}`}>{firstName} {lastName}</Link>
                     </h2>
-                    <h4>Certificaten: {certificates}</h4>
-                    <h5><em>Gespecialiseerd in: {specialization}</em></h5>
-                    <p>Ervaring: {experienceInYears} jaar</p>
+                    <p><strong>Certificates: </strong>{certificates}</p>
+                    <p><strong>Specialities: </strong>{specialization}</p>
+                    <p><strong>Experience: </strong>{experienceInYears} years</p>
                 </>
             )}
 
@@ -80,10 +80,9 @@ function Tile ( {type, data} ) {
                     <h2 className={`${type}-name`}>
                         <Link to={`/clients/${username}`}>{firstName} {lastName}</Link>
                     </h2>
-                    <h4>{email}</h4>
-                    <h5><em>{membership}</em></h5>
-
-                    <p>Requests: {wineAdviceRequestIdSet}</p>
+                    <p><strong>Membership: </strong>{membership}</p>
+                    <p><strong>Email: </strong>{email}</p>
+                    <p><strong>Requests: </strong> {wineAdviceRequestIdSet}</p>
                 </>
                 //TODO requests scheiden door kommas en/of in buttons met links(naar request) zetten + link naar advices
             )}
