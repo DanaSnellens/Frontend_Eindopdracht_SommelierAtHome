@@ -6,6 +6,7 @@ import Tile from '../../components/tile/Tile.jsx';
 import './OverviewPage.css';
 import { AuthContext } from "../../context/AuthContext.jsx";
 
+
 function OverviewPage() {
     const { type } = useParams();
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ function OverviewPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const hasPermission = () => {
+/*    const hasPermission = () => {
         switch (type) {
             case 'wines':
             case 'recipes':
@@ -29,34 +30,35 @@ function OverviewPage() {
             default:
                 return false;
         }
-    };
+    };*/
 
     useEffect(() => {
 
-        if (!hasPermission()) {
+/*        if (!hasPermission()) {
             setError(true);
             setTimeout(() => navigate('/signin'), 3000);
             return;
-        }
+        }*/
 
         async function fetchData (){
             setLoading(true);
             setError(false);
-
+            const token = localStorage.getItem('token');
             try {
-                const config = {};
-                if (!['clients', 'wineadvicerequests'].includes(type)) {
-                    const token = localStorage.getItem('token');
-                    config.headers = {
+                if (['clients', 'wineadvicerequests'].includes(type)) {
+                const response = await axios.get(`http://localhost:8080/${type}`, {
+                    headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
-                    };
-                }
-
-                const response = await axios.get(`http://localhost:8080/${type}`, {
+                    }
                 });
+
                 console.log(response.data);
                 setData(response.data);
+                } else {
+                    const response = await axios.get(`http://localhost:8080/${type}`);
+                    setData(response.data);
+                }
             } catch (error) {
                 setError(error.message);
             } finally {

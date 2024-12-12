@@ -13,6 +13,7 @@ function DetailPage() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
+/*
     const hasPermission = () => {
         switch (type) {
             case 'sommeliers':
@@ -28,19 +29,28 @@ function DetailPage() {
                 return false;
         }
     };
+*/
 
     useEffect(() => {
-
+/*
         if (!hasPermission()) {
+            console.log('werkt niet')
             setError("Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.");
             setTimeout(() => navigate('/signin'), 3000);
             return;
-        }
+        }*/
         const fetchData = async () => {
+            const token = localStorage.getItem('token');
             try {
-                const response = await axios.get(`http://localhost:8080/${type}/${id}`);
+                const response = await axios.get(`http://localhost:8080/${type}/${id}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+            }
+                });
                 setData(response.data);
             } catch (error) {
+                console.error(error)
                 setError(error.message);
             } finally {
                 setLoading(false);

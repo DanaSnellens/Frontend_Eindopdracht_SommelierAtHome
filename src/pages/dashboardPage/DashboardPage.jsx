@@ -12,7 +12,7 @@ function DashboardPage() {
         { index: 1, text: "Wijn toevoegen", onClick: () => navigate(`/wines/addnew`) },
         { index: 2, text: "Recept toevoegen", onClick: () => navigate(`/recipes/addnew`)},
         { index: 3, text: "Sommelier toevoegen", onClick: () => navigate(`sommeliers/addnew`)},
-        { index: 4, text: "Overzicht requests wijnadvies", onClick: () => navigate(`requests`) },
+        { index: 4, text: "Overzicht requests wijnadvies", onClick: () => navigate(`/requests`) },
         { index: 5, text: "Overzicht klanten", onClick: () => navigate(`/clients`) }
     ];
 

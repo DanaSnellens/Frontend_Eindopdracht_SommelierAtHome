@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import isTokenValid from "../helpers/isTokenValid.js";
 
-
 export const AuthContext = createContext({});
 
 function AuthContextProvider({ children }) {
@@ -43,7 +42,7 @@ function AuthContextProvider({ children }) {
         const roles = decoded.roles.map((role) => role.authority.replace('ROLE_', ''));
         void fetchUserData(decoded.sub, roles, JWT, '/dashboard');
     }
-    console.log(isAuth);
+
     function logout () {
         localStorage.clear();
         toggleIsAuth({
