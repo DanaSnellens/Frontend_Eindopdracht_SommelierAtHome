@@ -32,8 +32,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/about" element={<AboutUsPage/>}/>
-{/*                    <Route path="/wines" element={<OverviewWinesPage/>}/>
-                    <Route path="/recipes" element={<OverviewRecipesPage/>}/>*/}
+                    <Route path="/:type" element={<OverviewPage />} />
                     <Route path="/:type/:id" element={<DetailPage/>} />
 {/*                    <Route path="/recipes/:id" element={<DetailPage type="recipes" />} />
                     <Route path="/sommeliers/:id" element={<DetailPage type="sommeliers" />} />
@@ -44,7 +43,7 @@ function App() {
                     <Route path="/clients" element={<OverviewPage type="clients"/>}/>
                     <Route path="/requests" element={<OverviewPage type="requests"/>}/>*/}
 
-                    <Route path="/:type" element={<OverviewPage />} />
+
 
                     <Route path="/:type/addnew" element={<AddNewPage type="wines"/>}/>
 {/*                    <Route path="/recipes/addnew" element={<AddNewPage type="recipes"/>}/>
