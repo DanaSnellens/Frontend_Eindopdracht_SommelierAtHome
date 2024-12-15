@@ -15,31 +15,7 @@ function OverviewPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-/*    const hasPermission = () => {
-        switch (type) {
-            case 'wines':
-            case 'recipes':
-            case 'sommeliers':
-                return true;
-            case 'clients':
-            case 'wineadvicerequests':
-                if (isAuth) {
-                    return user.roles.includes('ADMIN') || user.username === username;
-                }
-                return false;
-            default:
-                return false;
-        }
-    };*/
-
     useEffect(() => {
-
-/*        if (!hasPermission()) {
-            setError(true);
-            setTimeout(() => navigate('/signin'), 3000);
-            return;
-        }*/
-
         async function fetchData (){
             setLoading(true);
             setError(false);

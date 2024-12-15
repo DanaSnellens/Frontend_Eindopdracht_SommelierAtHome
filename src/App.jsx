@@ -32,26 +32,17 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/about" element={<AboutUsPage/>}/>
-                    <Route path="/:type" element={<OverviewPage />} />
-                    <Route path="/:type/:id" element={<DetailPage/>} />
+                    <Route path="/:type" element={<OverviewPage/>}/>
+                    <Route path="/:type/:id" element={<DetailPage/>}/>
 {/*                    <Route path="/recipes/:id" element={<DetailPage type="recipes" />} />
                     <Route path="/sommeliers/:id" element={<DetailPage type="sommeliers" />} />
                     <Route path="/clients/:id" element={<DetailPage type="clients" />} />*/}
        {/*             //andere naam voor /advice*/}
                     <Route path="/advice" element={<PersonalAdvicePage/>}/>
-{/*                    <Route path="/sommeliers" element={<OverviewPage type="sommeliers"/>}/>
-                    <Route path="/clients" element={<OverviewPage type="clients"/>}/>
-                    <Route path="/requests" element={<OverviewPage type="requests"/>}/>*/}
 
 
 
-                    <Route path="/:type/addnew" element={<AddNewPage type="wines"/>}/>
-{/*                    <Route path="/recipes/addnew" element={<AddNewPage type="recipes"/>}/>
-                    <Route path="/sommeliers/addnew" element={<AddNewPage type="sommeliers"/>}/>
-                    <Route path="/clients/addnew" element={<AddNewPage type="clients"/>}/>
-                    <Route path="/requests/addnew" element={<AddNewPage type="requests"/>}/>
-                    <Route path="/advices/addnew" element={<AddNewPage type="advices"/>}/>*/}
-
+                    <Route path="/:type/addnew" element={<AddNewPage/>}/>
                     <Route path="/signin" element={<SignInPage/>}/>
                     <Route path={"/dashboard"} element={isAuth ? <DashboardPage/> : <Navigate to ="/signin"/>}/>
                     <Route path="*" element={<NotFound/>}/>
