@@ -43,6 +43,8 @@ function App() {
 
 
                     <Route path="/:type/addnew" element={<AddNewPage/>}/>
+{/*                    //Aanpassen naar edit page??*/}
+                    <Route path="/:type/:id/edit" element={<AddNewPage/>}/>
                     <Route path="/signin" element={<SignInPage/>}/>
                     <Route path={"/dashboard"} element={isAuth ? <DashboardPage/> : <Navigate to ="/signin"/>}/>
                     <Route path="*" element={<NotFound/>}/>

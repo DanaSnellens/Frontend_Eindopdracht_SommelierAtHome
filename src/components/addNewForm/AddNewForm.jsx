@@ -55,9 +55,19 @@ function AddNewForm({ type, register, errors }) {
             { name: "email", labelText: "Email", inputType: "email", validationRules: { required: "Email is required", pattern: { value: /^[^@]+@[^@]+\.[^@]+$/, message: "Invalid email format" } } },
             { name: "password", labelText: "Password", inputType: "text", validationRules: { required: "Password is required" } },
             { name: "passwordCheck", labelText: "Password (check)", inputType: "text", validationRules: { required: "Password check is required" } },
-            { name: "profilePictureUrl", labelText: "Profile picture url", inputType: "text", validationRules: { required: "Profile picture url is required" } },
+            { name: "profilePictureUrl", labelText: "Profile picture url", inputType: "text", },
+/*
             { name: "profilePictureAlt", labelText: "Profile picture alt (text to show when image link is not available)", inputType: "text", validationRules: { required: "Profile picture alt (text to show when image link is not available) is required" } },
-            { name: "membership", labelText: "Membership", inputType: "dropdowm", validationRules: { required: "Membership is required" } },
+*/
+            { name: "membership", labelText: "Membership", inputType: "dropdown", validationRules: { required: "Membership is required" } },
+        ],
+        wineadvicerequests: [
+            { name: "dinnerOccasion", labelText: "Dinner Occasion", inputType: "text", validationRules: { required: "Dinner Occasion is required" } },
+            { name: "requestMessage", labelText: "Request Message", inputType: "text", validationRules: { required: "Request Message is required" } },
+            { name: "recipeLink", labelText: "Recipe Link", inputType: "text", validationRules: { required: "Recipe Link is required" } },
+/*            { name: "recipeFile", labelText: "Recipe File", inputType: "text"},*/
+            { name: "minPricePerBottle", labelText: "Minimal price per bottle", inputType: "dropdown", validationRules: { required: "Minimal price is required"} },
+            { name: "maxPricePerBottle", labelText: "Maximal price per bottle", inputType: "dropdown", validationRules: { required: "Maximal price is required"} },
         ],
     };
 

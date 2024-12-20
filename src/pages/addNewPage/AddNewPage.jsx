@@ -18,6 +18,9 @@ function AddNewPage() {
         toggleError(false);
         const token = localStorage.getItem('token');
 
+/*        let postData = {};
+        switch ()*/
+
         try {
             if (type === 'clients') {
                 await axios.post(`http://localhost:8080/${type}`, data, {
@@ -33,9 +36,9 @@ function AddNewPage() {
 
             //TODO hij moet navigeren naar de letterlijke url hieronder, maar plakt dit nu achter dashboard
             if (['clients', 'sommeliers'].includes(type)) {
-                navigate(`localhost:5173/${type}/${username}`);
+                navigate(`/${type}/${username}`);
             } else {
-                navigate(`localhost:5173/${type}/id`);
+                navigate(`/${type}/id`);
             }
         } catch (e) {
             toggleError(e.message);

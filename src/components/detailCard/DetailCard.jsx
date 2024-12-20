@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import formatPrice from "../../helpers/formatPrice.js";
 import listFromString from "../../helpers/listFromString.js";
+import mapArrayToButtons from "../../helpers/mapArrayToButtons.jsx";
 import './DetailCard.css';
 
 function DetailCard({ type, data }) {
@@ -43,7 +44,16 @@ function DetailCard({ type, data }) {
         preparationTime,
         winePairing,
         preparationLongDescription,
-        wineIdSet
+        wineIdSet,
+        dinnerOccasion,
+        requestMessage,
+        recipeLink,
+        /*recipeFile,*/
+        minPricePerBottle,
+        maxPricePerBottle,
+        clientUsername,
+        sommelierUsername,
+        wineAdviceId
     } = data;
 
 /*    const unorderedList = (list) => { */
@@ -57,6 +67,7 @@ function DetailCard({ type, data }) {
                         <span className="avatar-image-wrapper">
                         <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl}/>
                         </span>
+                        <p><strong>Email: </strong> {email}</p>
                         <p><strong> Certificates: </strong> <span className="detail-card-list" dangerouslySetInnerHTML={{ __html: listFromString(certificates) }}/></p>
                         <p><strong>Specialities: </strong> {specialization}</p>
                         <p><strong>Experience: </strong> {experienceInYears} years</p>
@@ -71,10 +82,10 @@ function DetailCard({ type, data }) {
                         <span className="avatar-image-wrapper">
                         <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl}/>
                         </span>
+                        <p><strong>Email: </strong> {email}</p>
                         <p><strong>Membership: </strong> {membership}</p>
-                        <p><strong>Requests: </strong> {wineAdviceRequestIdSet}</p>
+                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, type)}</p>
                     </>
-                    //TODO requests scheiden door kommas
                 )}
 
 
@@ -92,7 +103,7 @@ function DetailCard({ type, data }) {
                         <p><strong>Price: </strong>{formatPrice(price)}</p>
                         <p><strong>Description: </strong>{longDescription}</p>
                         <p><strong>Food Pairing: </strong>{foodPairing}</p>
-                        <p><strong>Our recommended recipes: </strong>{recipeIdSet}</p>
+                        <p><strong>Our recommended recipes: </strong>{mapArrayToButtons(recipeIdSet)}</p>
                     </>
                 )}
 
@@ -107,7 +118,24 @@ function DetailCard({ type, data }) {
                         <p><strong>Other ingredients: </strong>{otherIngredients}</p>
                         <p><strong>Description: </strong>{preparationLongDescription}</p>
                         <p><strong>Wine pairing: </strong>{winePairing}</p>
-                        <p><strong>Our recommended wines: </strong>{wineIdSet}</p>
+                        <p><strong>Our recommended wines: </strong>{mapArrayToButtons(wineIdSet)}</p>
+                    </>
+                )}
+                {type === 'wineadvicerequests' && (
+                    <>
+                        <h1 className={`${type}-name`}>Request {id}</h1>
+                        <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        <p><strong>Client Username: </strong>{clientUsername}</p>
+                        <p><strong>Sommelier Username: </strong>{sommelierUsername}</p>
+                        <p><strong>Dinner Occasion: </strong>{dinnerOccasion}</p>
+                        <p><strong> Request Message: </strong>{requestMessage}</p>
+                        <p><strong>Recipe Link </strong>{recipeLink}</p>
+{/*                        <p><strong>Recipe File: </strong>{recipeFile}</p>*/}
+                        <p><strong>Minimal Price Per Bottle </strong>{minPricePerBottle}</p>
+                        <p><strong>Maximal Price Per Bottle </strong>{maxPricePerBottle}</p>
+                        <p><strong>Wine Advice: </strong>Hier komt een link naar het wijnadvies als die er is, anders een link naar addnew wineadvice {wineAdviceId}</p>
+                        <p><strong>Our recommended wines: </strong> </p>
+                        {mapArrayToButtons(type, wineIdSet)}
                     </>
                 )}
             </article>
