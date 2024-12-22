@@ -56,9 +56,7 @@ function AddNewForm({ type, register, errors }) {
             { name: "password", labelText: "Password", inputType: "text", validationRules: { required: "Password is required" } },
             { name: "passwordCheck", labelText: "Password (check)", inputType: "text", validationRules: { required: "Password check is required" } },
             { name: "profilePictureUrl", labelText: "Profile picture url", inputType: "text", },
-/*
             { name: "profilePictureAlt", labelText: "Profile picture alt (text to show when image link is not available)", inputType: "text", validationRules: { required: "Profile picture alt (text to show when image link is not available) is required" } },
-*/
             { name: "membership", labelText: "Membership", inputType: "dropdown", options: { BASIC: "Basic", REGULAR: "Regular", PREMIUM: "Premium" }, validationRules: { required: "Membership is required" } },
         ],
 
@@ -76,12 +74,13 @@ function AddNewForm({ type, register, errors }) {
 
     return (
         <>
-            {fields.map(({ name, labelText, inputType, validationRules }) => (
+            {fields.map(({ name, labelText, inputType, options, validationRules }) => (
                 <Input
                     key={name}
                     name={name}
                     labelText={labelText}
                     inputType={inputType}
+                    options={options}
                     validationRules={validationRules}
                     register={register}
                     errors={errors}
