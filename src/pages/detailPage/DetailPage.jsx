@@ -26,9 +26,14 @@ function DetailPage() {
                         }
                     });
                 } else {
-                    await axios.delete(`http://localhost:8080/${type}/${id}`);
+                    await axios.delete(`http://localhost:8080/${type}/${id}`, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        }
+                    });
                 }
-                navigate('/overviewpage');
+                navigate(`/${type}`);
             } else {
                 setError('You are not authorized to delete this item.');
             }
