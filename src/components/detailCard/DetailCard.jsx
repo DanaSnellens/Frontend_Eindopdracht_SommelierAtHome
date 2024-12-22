@@ -64,9 +64,9 @@ function DetailCard({ type, data }) {
                 {type === 'sommeliers' && (
                     <>
                         <h2 className={`${type}-name`}>{firstName} {lastName}</h2>
-                        <span className="avatar-image-wrapper">
+                        <div className="image-wrapper">
                         <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl}/>
-                        </span>
+                        </div>
                         <p><strong>Email: </strong> {email}</p>
                         <p><strong> Certificates: </strong> <span className="detail-card-list" dangerouslySetInnerHTML={{ __html: listFromString(certificates) }}/></p>
                         <p><strong>Specialities: </strong> {specialization}</p>
@@ -79,9 +79,9 @@ function DetailCard({ type, data }) {
                 {type === 'clients' && (
                     <>
                         <h2 className={`${type}-name`}>{firstName} {lastName}</h2>
-                        <span className="avatar-image-wrapper">
+                        <div className="image-wrapper">
                         <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl}/>
-                        </span>
+                        </div>
                         <p><strong>Email: </strong> {email}</p>
                         <p><strong>Membership: </strong> {membership}</p>
                         <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'clients')}</p>
@@ -92,7 +92,9 @@ function DetailCard({ type, data }) {
                 {type === 'wines' && (
                     <>
                         <h1 className={`${type}-name`}>{wineName}</h1>
-                        <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        <div className="image-wrapper">
+                            <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        </div>
                         <p><strong>Grapes: </strong> {grapeVarietal}</p>
                         <p><strong>Type & style: </strong>{wineType} {wineStyle}</p>
                         <p><strong>Country: </strong>{country}</p>
@@ -110,7 +112,9 @@ function DetailCard({ type, data }) {
                 {type === 'recipes' && (
                     <>
                         <h1 className={`${type}-name`}>{recipeName}</h1>
-                        <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        <div className="image-wrapper">
+                            <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        </div>
                         <p><strong>Course: </strong>{course}</p>
                         <p><strong>Servings: </strong>{servings} persons</p>
                         <p><strong> Preparation Time: </strong>{preparationTime} minutes</p>
