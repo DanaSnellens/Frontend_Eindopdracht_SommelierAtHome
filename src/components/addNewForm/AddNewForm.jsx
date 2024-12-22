@@ -59,8 +59,9 @@ function AddNewForm({ type, register, errors }) {
 /*
             { name: "profilePictureAlt", labelText: "Profile picture alt (text to show when image link is not available)", inputType: "text", validationRules: { required: "Profile picture alt (text to show when image link is not available) is required" } },
 */
-            { name: "membership", labelText: "Membership", inputType: "dropdown", validationRules: { required: "Membership is required" } },
+            { name: "membership", labelText: "Membership", inputType: "dropdown", options: { BASIC: "Basic", REGULAR: "Regular", PREMIUM: "Premium" }, validationRules: { required: "Membership is required" } },
         ],
+
         wineadvicerequests: [
             { name: "dinnerOccasion", labelText: "Dinner Occasion", inputType: "text", validationRules: { required: "Dinner Occasion is required" } },
             { name: "requestMessage", labelText: "Request Message", inputType: "text", validationRules: { required: "Request Message is required" } },

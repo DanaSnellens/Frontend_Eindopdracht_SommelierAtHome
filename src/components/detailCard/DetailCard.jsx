@@ -19,7 +19,7 @@ function DetailCard({ type, data }) {
         experienceInYears,
         curriculumVitae,
         specialization,
-        membership,
+        membership = {BASIC: "Basic", REGULAR: "Regular", PREMIUM: "Premium"},
         wineAdviceRequestIdSet,
         wineName,
         country,

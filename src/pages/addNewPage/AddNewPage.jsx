@@ -18,6 +18,7 @@ function AddNewPage() {
         setLoading(true);
         toggleError(false);
         const token = localStorage.getItem('token');
+        console.log(data);
 
 /*        let postData = {};
         switch ()*/
