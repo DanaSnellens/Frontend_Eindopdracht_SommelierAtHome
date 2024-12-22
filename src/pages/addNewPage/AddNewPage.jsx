@@ -10,7 +10,7 @@ import Button from "../../components/button/Button.jsx";
 function AddNewPage() {
     const { type } = useParams();
     const navigate = useNavigate();
-    const { user, username } = useContext(AuthContext);
+    const { isAuth, user, username } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [error, toggleError] = useState(null);
     const { handleSubmit, register, formState: { errors } } = useForm();

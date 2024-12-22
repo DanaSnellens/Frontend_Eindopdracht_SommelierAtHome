@@ -1,8 +1,10 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import Input from "../../components/input/Input.jsx";
 import "./SignUpPage.css";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import Button from "../../components/button/Button.jsx";
 
 function SignUpPage() {
     const {
@@ -170,7 +172,7 @@ function SignUpPage() {
                         </label>
                     </div>
 
-                    <button type="submit">Sign Up</button>
+                    <Button type="submit">Sign Up</Button>
                 </form>
             </div>
         </section>

@@ -4,6 +4,7 @@ import formatPrice from "../../helpers/formatPrice.js";
 import listFromString from "../../helpers/listFromString.js";
 import mapArrayToButtons from "../../helpers/mapArrayToButtons.jsx";
 import './DetailCard.css';
+import Button from "../button/Button.jsx";
 
 function DetailCard({ type, data }) {
     const {
@@ -73,6 +74,10 @@ function DetailCard({ type, data }) {
                         <p><strong>Experience: </strong> {experienceInYears} years</p>
                         <p><strong>CV: </strong><span className="detail-card-list" dangerouslySetInnerHTML={{ __html: listFromString(curriculumVitae) }}/></p>
                         <p><strong>Description: </strong> {sommelierDescription}</p>
+                        <Link to={'/message'}>
+                            <Button> Send message </Button>
+                        </Link>
+                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'sommeliers')}</p>
                     </>
                 )}
 

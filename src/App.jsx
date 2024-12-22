@@ -17,6 +17,8 @@ import {useContext} from "react";
 import {Navigate, Route, Routes} from 'react-router-dom';
 import AddNewPage from "./pages/addNewPage/AddNewPage.jsx";
 import OverviewPage from "./pages/overviewPage/OverviewPage.jsx";
+import SignUpPage from "./pages/signUpPage/SignUpPage.jsx";
+import SendMessagePage from "./pages/sendMessagePage/SendMessagePage.jsx";
 
 function App() {
 
@@ -46,6 +48,9 @@ function App() {
 {/*                    //Aanpassen naar edit page??*/}
                     <Route path="/:type/:id/edit" element={<AddNewPage/>}/>
                     <Route path="/signin" element={<SignInPage/>}/>
+                    <Route path="/register" element={<SignUpPage/>}/>
+                    <Route path="/signout" element={<Navigate to="/"/>}/>
+                    <Route path="/message" element={<SendMessagePage/>}/>
                     <Route path={"/dashboard"} element={isAuth ? <DashboardPage/> : <Navigate to ="/signin"/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
