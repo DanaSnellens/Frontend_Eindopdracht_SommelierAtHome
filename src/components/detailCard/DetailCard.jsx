@@ -84,7 +84,7 @@ function DetailCard({ type, data }) {
                         </span>
                         <p><strong>Email: </strong> {email}</p>
                         <p><strong>Membership: </strong> {membership}</p>
-                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, type)}</p>
+                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'clients')}</p>
                     </>
                 )}
 
@@ -103,7 +103,7 @@ function DetailCard({ type, data }) {
                         <p><strong>Price: </strong>{formatPrice(price)}</p>
                         <p><strong>Description: </strong>{longDescription}</p>
                         <p><strong>Food Pairing: </strong>{foodPairing}</p>
-                        <p><strong>Our recommended recipes: </strong>{mapArrayToButtons(recipeIdSet)}</p>
+                        <p><strong>Our recommended recipes: </strong>{mapArrayToButtons(recipeIdSet, 'recipes')}</p>
                     </>
                 )}
 
@@ -118,7 +118,7 @@ function DetailCard({ type, data }) {
                         <p><strong>Other ingredients: </strong>{otherIngredients}</p>
                         <p><strong>Description: </strong>{preparationLongDescription}</p>
                         <p><strong>Wine pairing: </strong>{winePairing}</p>
-                        <p><strong>Our recommended wines: </strong>{mapArrayToButtons(wineIdSet)}</p>
+                        <p><strong>Our recommended wines: </strong>{mapArrayToButtons(wineIdSet, 'wines')}</p>
                     </>
                 )}
                 {type === 'wineadvicerequests' && (
@@ -135,7 +135,7 @@ function DetailCard({ type, data }) {
                         <p><strong>Maximal Price Per Bottle </strong>{maxPricePerBottle}</p>
                         <p><strong>Wine Advice: </strong>Hier komt een link naar het wijnadvies als die er is, anders een link naar addnew wineadvice {wineAdviceId}</p>
                         <p><strong>Our recommended wines: </strong> </p>
-                        {mapArrayToButtons(type, wineIdSet)}
+                        {mapArrayToButtons(wineIdSet, 'wineadvicerequests')}
                     </>
                 )}
             </article>

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import AddNewForm from "../../components/addNewForm/AddNewForm.jsx";
+import Button from "../../components/button/Button.jsx";
 
 
 function AddNewPage() {
@@ -54,9 +55,9 @@ function AddNewPage() {
                 {error && <p className="error">{error}</p>}
                 <form onSubmit={handleSubmit(handleFormSubmit)} className="add-new-form">
                     <AddNewForm type={type} register={register} errors={errors} />
-                    <button type="submit" disabled={loading}>
+                    <Button type="submit" disabled={loading}>
                         {loading ? "Adding..." : "Add"}
-                    </button>
+                    </Button>
                 </form>
             </div>
         </section>
