@@ -6,6 +6,7 @@ import Tile from '../../components/tile/Tile.jsx';
 import './OverviewPage.css';
 import { AuthContext } from "../../context/AuthContext.jsx";
 
+
 function OverviewPage() {
     const { type } = useParams();
     const navigate = useNavigate();
@@ -13,62 +14,89 @@ function OverviewPage() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    const hasPermission = () => {
-        switch (type) {
-            case 'wines':
-            case 'recipes':
-            case 'sommeliers':
-                return true;
-            case 'clients':
-            case 'wineadvicerequests':
-                if (isAuth) {
-                    return user.roles.includes('ADMIN') || user.username === username;
-                }
-                return false;
-            default:
-                return false;
-        }
-    };
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-
-        if (!hasPermission()) {
-            setError(true);
-            setTimeout(() => navigate('/signin'), 3000);
-            return;
-        }
-
         async function fetchData (){
+            setLoading(true);
+            setError(false);
             const token = localStorage.getItem('token');
-
             try {
+                if (['clients', 'wineadvicerequests'].includes(type)) {
                 const response = await axios.get(`http://localhost:8080/${type}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
-                    },
+                    }
                 });
+
+                console.log(response.data);
                 setData(response.data);
+                } else {
+                    const response = await axios.get(`http://localhost:8080/${type}`);
+                    setData(response.data);
+                }
             } catch (error) {
                 setError(error.message);
             } finally {
                 setLoading(false);
             }
-        };
+        }
 
-        fetchData();
-    }, []);
+        void fetchData();
+    }, [type]);
 
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+/*    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;*/
 
-    return (
+//POGING TOT SEARCHBAR
+    /*    return (
         <>
-            <section className={`${type}-overview outer-content-container`}>
+            <section className={`${type}-overview-section outer-content-container`}>
                 <div className="overview-page inner-content-container">
-                    {error && <p className="error">Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.</p>}
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    <h1 className="page-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h1>
+                    <div className="tile-container">
+                        {data
+                            .filter((item) => {
+                                const query = searchQuery.toLowerCase();
+                                if (type === 'wines') {
+                                    return (
+                                        item.name.toLowerCase().includes(query) ||
+                                        item.style.toLowerCase().includes(query) ||
+                                        item.type.toLowerCase().includes(query)
+                                    );
+                                } else if (type === 'recipes') {
+                                    return (
+                                        item.name.toLowerCase().includes(query) ||
+                                        item.ingredients.some((ingredient) =>
+                                            ingredient.toLowerCase().includes(query)
+                                        )
+                                    );
+                                } else {
+                                    return item.name.toLowerCase().includes(query);
+                                }
+                            })
+                            .map((item) => (
+                                <Tile key={item.id || item.username} type={type} data={item} />
+                            ))}
+                    </div>
+                </div>
+            </section>
+        </>
+    );*/
+
+        return (
+        <>
+            <section className={`${type}-overview-section outer-content-container`}>
+                <div className="overview-page inner-content-container">
+{/*                    {error && <p className="error">Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.</p>}*/}
                     <h1 className="page-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h1>
                     <div className="tile-container">
                         {data.map((item) => (

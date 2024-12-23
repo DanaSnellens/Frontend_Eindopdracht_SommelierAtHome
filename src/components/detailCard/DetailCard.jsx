@@ -1,6 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import formatPrice from "../../helpers/formatPrice.js";
+import listFromString from "../../helpers/listFromString.js";
+import mapArrayToButtons from "../../helpers/mapArrayToButtons.jsx";
+import './DetailCard.css';
+import Button from "../button/Button.jsx";
 
 function DetailCard({ type, data }) {
     const {
@@ -16,7 +20,7 @@ function DetailCard({ type, data }) {
         experienceInYears,
         curriculumVitae,
         specialization,
-        membership,
+        membership = {BASIC: "Basic", REGULAR: "Regular", PREMIUM: "Premium"},
         wineAdviceRequestIdSet,
         wineName,
         country,
@@ -41,8 +45,19 @@ function DetailCard({ type, data }) {
         preparationTime,
         winePairing,
         preparationLongDescription,
-        wineIdSet
+        wineIdSet,
+        dinnerOccasion,
+        requestMessage,
+        recipeLink,
+        /*recipeFile,*/
+        minPricePerBottle,
+        maxPricePerBottle,
+        clientUsername,
+        sommelierUsername,
+        wineAdviceId
     } = data;
+
+/*    const unorderedList = (list) => { */
 
     return (
         <>
@@ -50,35 +65,42 @@ function DetailCard({ type, data }) {
                 {type === 'sommeliers' && (
                     <>
                         <h2 className={`${type}-name`}>{firstName} {lastName}</h2>
-                        <span className="avatar-image-wrapper">
+                        <div className="image-wrapper">
                         <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl}/>
-                        </span>
-                        <h4>Certificaten: {certificates}</h4>
-                        <h5><em>Gespecialiseerd in: {specialization}</em></h5>
-                        <p>Ervaring: {experienceInYears} jaar</p>
-                        <p>CV: {curriculumVitae}</p>
-                        <p>{sommelierDescription}</p>
+                        </div>
+                        <p><strong>Email: </strong> {email}</p>
+                        <p><strong> Certificates: </strong> <span className="detail-card-list" dangerouslySetInnerHTML={{ __html: listFromString(certificates) }}/></p>
+                        <p><strong>Specialities: </strong> {specialization}</p>
+                        <p><strong>Experience: </strong> {experienceInYears} years</p>
+                        <p><strong>CV: </strong><span className="detail-card-list" dangerouslySetInnerHTML={{ __html: listFromString(curriculumVitae) }}/></p>
+                        <p><strong>Description: </strong> {sommelierDescription}</p>
+                        <Link to={'/message'}>
+                            <Button> Send message </Button>
+                        </Link>
+                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'sommeliers')}</p>
                     </>
                 )}
 
                 {type === 'clients' && (
                     <>
                         <h2 className={`${type}-name`}>{firstName} {lastName}</h2>
-                        <span className="avatar-image-wrapper">
+                        <div className="image-wrapper">
                         <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl}/>
-                        </span>
-                        <h4>Lidmaatschap: {membership}</h4>
-                        <p>Requests: {wineAdviceRequestIdSet}</p>
+                        </div>
+                        <p><strong>Email: </strong> {email}</p>
+                        <p><strong>Membership: </strong> {membership}</p>
+                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'clients')}</p>
                     </>
-                    //TODO requests scheiden door kommas
                 )}
 
 
                 {type === 'wines' && (
                     <>
                         <h1 className={`${type}-name`}>{wineName}</h1>
-                        <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
-                        <p><strong>Grape(s): </strong> {grapeVarietal}</p>
+                        <div className="image-wrapper">
+                            <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        </div>
+                        <p><strong>Grapes: </strong> {grapeVarietal}</p>
                         <p><strong>Type & style: </strong>{wineType} {wineStyle}</p>
                         <p><strong>Country: </strong>{country}</p>
                         <p><strong>Region: </strong>{region}</p>
@@ -88,14 +110,16 @@ function DetailCard({ type, data }) {
                         <p><strong>Price: </strong>{formatPrice(price)}</p>
                         <p><strong>Description: </strong>{longDescription}</p>
                         <p><strong>Food Pairing: </strong>{foodPairing}</p>
-                        <p><strong>Our recommanded recipes: </strong>{recipeIdSet}</p>
+                        <p><strong>Our recommended recipes: </strong>{mapArrayToButtons(recipeIdSet, 'recipes')}</p>
                     </>
                 )}
 
                 {type === 'recipes' && (
                     <>
                         <h1 className={`${type}-name`}>{recipeName}</h1>
-                        <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        <div className="image-wrapper">
+                            <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        </div>
                         <p><strong>Course: </strong>{course}</p>
                         <p><strong>Servings: </strong>{servings} persons</p>
                         <p><strong> Preparation Time: </strong>{preparationTime} minutes</p>
@@ -103,7 +127,24 @@ function DetailCard({ type, data }) {
                         <p><strong>Other ingredients: </strong>{otherIngredients}</p>
                         <p><strong>Description: </strong>{preparationLongDescription}</p>
                         <p><strong>Wine pairing: </strong>{winePairing}</p>
-                        <p><strong>Our recommended wines: </strong>{wineIdSet}</p>
+                        <p><strong>Our recommended wines: </strong>{mapArrayToButtons(wineIdSet, 'wines')}</p>
+                    </>
+                )}
+                {type === 'wineadvicerequests' && (
+                    <>
+                        <h1 className={`${type}-name`}>Request {id}</h1>
+                        <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
+                        <p><strong>Client Username: </strong>{clientUsername}</p>
+                        <p><strong>Sommelier Username: </strong>{sommelierUsername}</p>
+                        <p><strong>Dinner Occasion: </strong>{dinnerOccasion}</p>
+                        <p><strong> Request Message: </strong>{requestMessage}</p>
+                        <p><strong>Recipe Link </strong>{recipeLink}</p>
+{/*                        <p><strong>Recipe File: </strong>{recipeFile}</p>*/}
+                        <p><strong>Minimal Price Per Bottle </strong>{minPricePerBottle}</p>
+                        <p><strong>Maximal Price Per Bottle </strong>{maxPricePerBottle}</p>
+                        <p><strong>Wine Advice: </strong>Hier komt een link naar het wijnadvies als die er is, anders een link naar addnew wineadvice {wineAdviceId}</p>
+                        <p><strong>Our recommended wines: </strong> </p>
+                        {mapArrayToButtons(wineIdSet, 'wineadvicerequests')}
                     </>
                 )}
             </article>
