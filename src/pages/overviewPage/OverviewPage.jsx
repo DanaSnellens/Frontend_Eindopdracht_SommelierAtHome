@@ -14,6 +14,7 @@ function OverviewPage() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         async function fetchData (){
@@ -49,7 +50,49 @@ function OverviewPage() {
 /*    if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;*/
 
-    return (
+//POGING TOT SEARCHBAR
+    /*    return (
+        <>
+            <section className={`${type}-overview-section outer-content-container`}>
+                <div className="overview-page inner-content-container">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    <h1 className="page-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h1>
+                    <div className="tile-container">
+                        {data
+                            .filter((item) => {
+                                const query = searchQuery.toLowerCase();
+                                if (type === 'wines') {
+                                    return (
+                                        item.name.toLowerCase().includes(query) ||
+                                        item.style.toLowerCase().includes(query) ||
+                                        item.type.toLowerCase().includes(query)
+                                    );
+                                } else if (type === 'recipes') {
+                                    return (
+                                        item.name.toLowerCase().includes(query) ||
+                                        item.ingredients.some((ingredient) =>
+                                            ingredient.toLowerCase().includes(query)
+                                        )
+                                    );
+                                } else {
+                                    return item.name.toLowerCase().includes(query);
+                                }
+                            })
+                            .map((item) => (
+                                <Tile key={item.id || item.username} type={type} data={item} />
+                            ))}
+                    </div>
+                </div>
+            </section>
+        </>
+    );*/
+
+        return (
         <>
             <section className={`${type}-overview-section outer-content-container`}>
                 <div className="overview-page inner-content-container">

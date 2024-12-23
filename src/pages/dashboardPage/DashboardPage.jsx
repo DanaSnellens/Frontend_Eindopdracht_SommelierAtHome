@@ -13,7 +13,8 @@ function DashboardPage() {
         { index: 2, text: "Recept toevoegen", onClick: () => navigate(`/recipes/addnew`)},
         { index: 3, text: "Sommelier toevoegen", onClick: () => navigate(`/sommeliers/addnew`)},
         { index: 4, text: "Overzicht requests wijnadvies", onClick: () => navigate(`/wineadvicerequests`) },
-        { index: 5, text: "Overzicht klanten", onClick: () => navigate(`/clients`) }
+        { index: 5, text: "Overzicht klanten", onClick: () => navigate(`/clients`) },
+        { index: 6, text: "Stuur klant bericht", onClick: () => navigate(`/message`) }
     ];
 
     const clientButtons = [
