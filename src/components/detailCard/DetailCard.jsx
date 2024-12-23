@@ -74,10 +74,10 @@ function DetailCard({ type, data }) {
                         <p><strong>Experience: </strong> {experienceInYears} years</p>
                         <p><strong>CV: </strong><span className="detail-card-list" dangerouslySetInnerHTML={{ __html: listFromString(curriculumVitae) }}/></p>
                         <p><strong>Description: </strong> {sommelierDescription}</p>
+                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'sommeliers')}</p>
                         <Link to={'/message'}>
                             <Button> Send message </Button>
                         </Link>
-                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'sommeliers')}</p>
                     </>
                 )}
 

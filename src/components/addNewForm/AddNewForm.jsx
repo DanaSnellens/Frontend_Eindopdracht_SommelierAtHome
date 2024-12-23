@@ -54,7 +54,9 @@ function AddNewForm({ type, register, errors }) {
             { name: "lastName", labelText: "Last name", inputType: "text", validationRules: { required: "Last name is required" } },
             { name: "email", labelText: "Email", inputType: "email", validationRules: { required: "Email is required", pattern: { value: /^[^@]+@[^@]+\.[^@]+$/, message: "Invalid email format" } } },
             { name: "password", labelText: "Password", inputType: "text", validationRules: { required: "Password is required" } },
+/*
             { name: "passwordCheck", labelText: "Password (check)", inputType: "text", validationRules: { required: "Password check is required" } },
+*/
             { name: "profilePictureUrl", labelText: "Profile picture url", inputType: "text", },
             { name: "profilePictureAlt", labelText: "Profile picture alt (text to show when image link is not available)", inputType: "text", validationRules: { required: "Profile picture alt (text to show when image link is not available) is required" } },
             { name: "membership", labelText: "Membership", inputType: "dropdown", options: { BASIC: "Basic", REGULAR: "Regular", PREMIUM: "Premium" }, validationRules: { required: "Membership is required" } },
