@@ -52,32 +52,8 @@ function DetailPage() {
         }
     };
 
-/*
-    const hasPermission = () => {
-        switch (type) {
-            case 'sommeliers':
-            case 'wines' :
-            case 'recipes' :
-                return true;
-            case 'clients' :
-                if (isAuth) {
-                    return user.roles.includes('ADMIN') || user.username === id;
-                }
-                return false;
-            default:
-                return false;
-        }
-    };
-*/
 
     useEffect(() => {
-/*
-        if (!hasPermission()) {
-            console.log('werkt niet')
-            setError("Je bent niet ingelogd of hebt niet de rechten om deze pagina te bekijken. Je wordt nu doorgestuurd naar de inlogpagina.");
-            setTimeout(() => navigate('/signin'), 3000);
-            return;
-        }*/
         const fetchData = async () => {
             const token = localStorage.getItem('token');
             try {
