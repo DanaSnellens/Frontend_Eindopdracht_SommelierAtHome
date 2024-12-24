@@ -20,15 +20,15 @@ function AddNewPage() {
         const token = localStorage.getItem('token');
         console.log(data);
 
-/*        let postData = {};
-        switch ()*/
+        let postData = {};
+
 
         try {
             if (type === 'clients') {
-                await axios.post(`http://localhost:8080/${type}`, data, {
+                await axios.post(`http://localhost:8080/${type}`, postData, {
                 });
             } else {
-                await axios.post(`http://localhost:8080/${type}`, data, {
+                await axios.post(`http://localhost:8080/${type}`, postData, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,

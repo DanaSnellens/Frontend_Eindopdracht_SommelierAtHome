@@ -6,7 +6,7 @@ import {useContext} from "react";
 import Button from "../button/Button.jsx";
 function Navigation() {
 
-const { isAuth, logout } = useContext(AuthContext);
+const { isAuth, user, logout } = useContext(AuthContext);
     return (
         <nav className=  "main-navigation outer-content-container">
             <div className= "inner-nav-container">
@@ -22,7 +22,6 @@ const { isAuth, logout } = useContext(AuthContext);
                             <div className="dropdown">
                                 <span className="icon-person"></span>
                                 <div className="dropdown-content">
-                                    <Link to="/dashboard">Dashboard</Link>
                                     <Button type="button" clickHandler={logout}>Logout</Button>
                                 </div>
                             </div>
@@ -30,9 +29,9 @@ const { isAuth, logout } = useContext(AuthContext);
                     ) : (
                         <li><Link to="/signin">Sign In</Link></li>
                     )}
-{/*                    <li><Link to="/signin">Sign In</Link></li>*/}
                 </ul>
             </div>
+
         </nav>
     )
 }
