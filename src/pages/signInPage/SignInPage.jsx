@@ -34,7 +34,7 @@ function SignInPage() {
             console.log(response.data);
             login(response.data.token);
         } catch (e) {
-            console.error('Gebruikersnaam of wachtwoord is onjuist', e);
+            console.error('Ge bruikersnaam of wachtwoord is onjuist', e);
             toggleError('Gebruikersnaam of wachtwoord is onjuist');
         }
     }

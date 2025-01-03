@@ -17,18 +17,21 @@ function AddNewPage() {
     async function handleFormSubmit(data) {
         setLoading(true);
         toggleError(false);
+/*        data.preventDefault();*/
         const token = localStorage.getItem('token');
         console.log(data);
 
-        let postData = {};
+/*        let postData = {};*/
 
 
         try {
             if (type === 'clients') {
-                await axios.post(`http://localhost:8080/${type}`, postData, {
+                await axios.post(`http://localhost:8080/${type}`,
+                    data, {
                 });
             } else {
-                await axios.post(`http://localhost:8080/${type}`, postData, {
+                await axios.post(`http://localhost:8080/${type}`,
+                    data, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,

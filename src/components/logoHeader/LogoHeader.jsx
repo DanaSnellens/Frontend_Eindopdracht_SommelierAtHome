@@ -14,13 +14,6 @@ function LogoHeader() {
     return (
         <>
         <section className="logo-header-section outer-content-container">
-
-            <div className="logo-header">
-            <span className="image-wrapper">
-                <img src={logo} alt="Company logo"/>
-            </span>
-
-            </div>
             <div className="side-nav-container">
                 {isAuth && user.roles.includes('ADMIN') && (
                     <ul className="admin-nav">
@@ -43,7 +36,12 @@ function LogoHeader() {
                 )}
             </div>
 
+            <div className="logo-header">
+            <span className="image-wrapper">
+                <img src={logo} alt="Company logo"/>
+            </span>
 
+            </div>
         </section>
         </>
     )
