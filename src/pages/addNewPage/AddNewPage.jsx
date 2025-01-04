@@ -25,25 +25,26 @@ function AddNewPage() {
 
 
         try {
-            if (type === 'clients') {
-                await axios.post(`http://localhost:8080/${type}`,
-                    data, {
-                });
-            } else {
-                await axios.post(`http://localhost:8080/${type}`,
-                    data, {
+            const response = await axios.post(
+                `http://localhost:8080/${type}`,
+                data,
+                type === 'clients'
+                ? {}
+                : {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                });
-            }
+                }
+                );
 
-            //TODO hij moet navigeren naar de letterlijke url hieronder, maar plakt dit nu achter dashboard
-            if (['clients', 'sommeliers'].includes(type)) {
+            const { id } = response.data;
+            console.log('Backend response:', response.data);
+
+            if(['clients', 'sommeliers'].includes(type)) {
                 navigate(`/${type}/${username}`);
             } else {
-                navigate(`/${type}/id`);
+                navigate(`/${type}/${id}`);
             }
         } catch (e) {
             toggleError(e.message);

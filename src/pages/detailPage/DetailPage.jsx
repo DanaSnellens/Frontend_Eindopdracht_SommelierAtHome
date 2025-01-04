@@ -57,7 +57,7 @@ function DetailPage() {
         const fetchData = async () => {
             const token = localStorage.getItem('token');
             try {
-                if ((['clients', 'wineadvicerequests'].includes(type)) && (user.roles.includes('ADMIN') || user.username === id)) {
+                if ((['clients', 'wineadvicerequests', 'wineadvices'].includes(type)) && (user.roles.includes('ADMIN') || user.username === id)) {
                     const response = await axios.get(`http://localhost:8080/${type}/${id}`, {
                         headers: {
                             "Content-Type": "application/json",
