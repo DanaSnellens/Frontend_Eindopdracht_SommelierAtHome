@@ -13,7 +13,7 @@ function DetailPage() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const handleDelete = async (id, username) => {
+    async function handleDelete (id, username) {
         /* if */(window.confirm('Are you sure you want to delete this item?')) ? console.log('yes') : console.log('no');
         const token = localStorage.getItem('token');
         try {

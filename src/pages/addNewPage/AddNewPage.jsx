@@ -13,6 +13,7 @@ function AddNewPage() {
     const { isAuth, user, username } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [error, toggleError] = useState(null);
+    const [addSucces, toggleAddSuccess] = useState(false);
     const { handleSubmit, register, formState: { errors } } = useForm();
     async function handleFormSubmit(data) {
         setLoading(true);
@@ -38,14 +39,15 @@ function AddNewPage() {
                 }
                 );
 
-            const { id } = response.data;
+        /*    const { id } = response.data;*/
             console.log('Backend response:', response.data);
-
-            if(['clients', 'sommeliers'].includes(type)) {
+            toggleAddSuccess(true);
+//TODO dit geeft 400 error, nog aanpassen
+/*            if((['clients', 'sommeliers'].includes(type)) ){
                 navigate(`/${type}/${username}`);
             } else {
                 navigate(`/${type}/${id}`);
-            }
+            }*/
         } catch (e) {
             toggleError(e.message);
         } finally {
@@ -58,6 +60,9 @@ function AddNewPage() {
             <div className="inner-content-container__text-restriction">
                 <h1>Add new {type}</h1>
                 {error && <p className="error">{error}</p>}
+                {loading && <p>Loading...</p>}
+                {addSucces === true && <p>Added successfully</p>}
+
                 <form onSubmit={handleSubmit(handleFormSubmit)} className="add-new-form">
                     <AddNewForm type={type} register={register} errors={errors} />
                     <Button type="submit" disabled={loading}>
