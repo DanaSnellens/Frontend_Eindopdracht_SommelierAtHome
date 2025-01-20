@@ -136,7 +136,7 @@ function SignUpPage() {
                                     className={errors.membership ? "error" : ""}
                                 >
                                     <option value="">Select Membership</option>
-                                    <option value="none">None</option>
+                                    <option value="NONE">None</option>
                                     <option value="BASIC">Basic</option>
                                     <option value="REGULAR">Regular</option>
                                     <option value="PREMIUM">Premium</option>

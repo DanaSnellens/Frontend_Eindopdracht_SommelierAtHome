@@ -105,13 +105,13 @@ function DetailPage() {
                     {isAuth && user.roles.includes('ADMIN') && (
                         <section className="isAuth-buttons-section">
                             <Button type="button" clickHandler={() => handleDelete(data.id, data.username)}>Delete</Button>
-                            <Button type={"button"} clickHandler={() => handleEdit(data.id, data.username)}>Adjust</Button>
+                            <Button type={"button"} clickHandler={() => handleEdit(data.id, data.username)}>Edit</Button>
                         </section>
                     )}
                     {isAuth && user.roles.includes('CLIENT') && (
                         <section className="isAuth-buttons-section">
                             <Button type="button" clickHandler={() => handleDelete(data.id, data.username)}>Delete</Button>
-                            <Button type={"button"} clickHandler={() => handleEdit(data.id, data.username)}>Adjust</Button>
+                            <Button type={"button"} clickHandler={() => handleEdit(data.id, data.username)}>Edit</Button>
                         </section>
                     )}
                 </div>
