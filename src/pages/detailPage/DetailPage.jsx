@@ -65,10 +65,15 @@ function DetailPage() {
                         }
                     });
                     console.log(response.data);
+                    console.log(type);
+                    console.log(id);
                     setData(response.data);
                 } else {
                     const response = await axios.get(`http://localhost:8080/${type}/${id}`);
                     setData(response.data);
+                    console.log(response.data);
+                    console.log(type);
+                    console.log(id);
                 }
 /*                const response = await axios.get(`http://localhost:8080/${type}/${id}`, {
 /!*                    headers: {
@@ -86,7 +91,7 @@ function DetailPage() {
         };
         console.log(data);
         void fetchData();
-    }, []);
+    }, [type]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;

@@ -11,14 +11,14 @@ function SignUpPage() {
         handleSubmit,
         register,
         formState: { errors },
-        watch,
+/*        watch,*/
     } = useForm();
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    const password = watch('password');
+/*    const password = watch('password');*/
 
     const source = axios.CancelToken.source();
 /*    const[username, setUsername] = useState("");
@@ -36,10 +36,15 @@ function SignUpPage() {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8080/register', {
+            const response = await axios.post('http://localhost:8080/clients', {
                 email: data.email,
                 username: data.username,
                 password: data.password,
+                firstName: data.firstName,
+                lastName: data.lastName,
+                profilePictureUrl: data.profilePictureUrl,
+                membership: data.membership,
+
             },{
                 cancelToken: source.token,
             });
@@ -47,7 +52,7 @@ function SignUpPage() {
             navigate('/signin');
         } catch (e) {
             console.error(e);
-            setError('Er is iets misgegaan bij het aanmaken van je account. Probeer het later opnieuw.');
+            setError(true);
         } finally {
             setLoading(false);
         }
@@ -72,6 +77,7 @@ function SignUpPage() {
                     <Input
                                 labelText="Username"
                                 name="username"
+                                inputType="text"
                                 register={register}
                                 validation={{ required: "Username is required" }}
                                 errors={errors}
@@ -80,6 +86,7 @@ function SignUpPage() {
                             <Input
                                 labelText="First Name"
                                 name="firstName"
+                                inputType="text"
                                 register={register}
                                 validation={{ required: "First Name is required" }}
                                 errors={errors}
@@ -88,6 +95,7 @@ function SignUpPage() {
                             <Input
                                 labelText="Last Name"
                                 name="lastName"
+                                inputType="text"
                                 register={register}
                                 validation={{ required: "Last Name is required" }}
                                 errors={errors}
@@ -96,7 +104,7 @@ function SignUpPage() {
                             <Input
                                 labelText="Email"
                                 name="email"
-                                type="email"
+                                inputType="email"
                                 register={register}
                                 validation={{
                                     required: "Email is required",
@@ -108,7 +116,7 @@ function SignUpPage() {
                             <Input
                                 labelText="Profile Picture URL"
                                 name="profilePictureUrl"
-                                type="url"
+                                inputType="url"
                                 register={register}
                                 validation={{
                                     required: "Profile Picture URL is required",
@@ -129,9 +137,9 @@ function SignUpPage() {
                                 >
                                     <option value="">Select Membership</option>
                                     <option value="none">None</option>
-                                    <option value="basic">Basic</option>
-                                    <option value="regular">Regular</option>
-                                    <option value="premium">Premium</option>
+                                    <option value="BASIC">Basic</option>
+                                    <option value="REGULAR">Regular</option>
+                                    <option value="PREMIUM">Premium</option>
                                 </select>
                                 {errors.membership && (
                                     <p className="error-message">{errors.membership.message}</p>
@@ -141,7 +149,7 @@ function SignUpPage() {
                             <Input
                                 labelText="Password"
                                 name="password"
-                                type="password"
+                                inputType="password"
                                 register={register}
                                 validation={{
                                     required: "Password is required",
@@ -153,7 +161,7 @@ function SignUpPage() {
                                 errors={errors}
                             />
 
-                            <Input
+{/*                            <Input
                                 labelText="Confirm Password"
                                 name="passwordCheck"
                                 type="password"
@@ -164,7 +172,7 @@ function SignUpPage() {
                                         value === password || "Passwords do not match",
                                 }}
                                 errors={errors}
-                            />
+                            />*/}
 
                             <div className="checkbox-container">
                                 <label>
@@ -173,7 +181,13 @@ function SignUpPage() {
                                 </label>
                             </div>
 
-                            <Button type="submit" disabled={loading}>Sign Up</Button>
+                            <Button
+                                type="submit"
+                                className="primary"
+                                onClicik={handleFormSubmit}
+                                disabled={loading}>
+                                Sign Up
+                            </Button>
                 </form>
             </div>
         </section>
