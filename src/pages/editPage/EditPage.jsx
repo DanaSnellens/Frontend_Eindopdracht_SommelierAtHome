@@ -3,8 +3,10 @@ import { AuthContext } from "../../context/AuthContext.jsx";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import AddNewForm from "../../components/addNewForm/AddNewForm.jsx";
 import Button from "../../components/button/Button.jsx";
+import EditForm from "../../components/editForm/EditForm.jsx";
+import {getInitialValues} from "../../helpers/getInitialValues.js";
+import "./EditPage.css";
 
 
 function AddNewPage() {
@@ -12,11 +14,36 @@ function AddNewPage() {
     const navigate = useNavigate();
     const { isAuth, user } = useContext(AuthContext);
     const {id, username} = useParams();
+    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, toggleError] = useState(null);
     const [addSucces, toggleAddSuccess] = useState(false);
     const { handleSubmit, register, formState: { errors } } = useForm();
-    async function handleFormSubmit(data) {
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get(`http://localhost:8080/${type}/${id}`);
+                setData(response.data);
+            } catch (error) {
+                console.error('Error fetching data', error);
+                toggleError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchData();
+    }, [id, username]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (!data) {
+        return <p>No data found for this object.</p>;
+    }
+
+    async function handleFormUpdate(updatedData) {
         setLoading(true);
         toggleError(false);
         /*        data.preventDefault();*/
@@ -25,12 +52,9 @@ function AddNewPage() {
 
         /*        let postData = {};*/
 
-
-
         try {
-            const response = await axios.post(
-                `http://localhost:8080/${type}`,
-                data,
+            const response = await axios.put(
+                `http://localhost:8080/${type}/${id}`, updatedData,
                 type === 'clients'
                     ? {}
                     : {
@@ -58,17 +82,17 @@ function AddNewPage() {
     }
 
     return (
-        <section className="section-add-new outer-content-container">
+        <section className="section-edit outer-content-container">
             <div className="inner-content-container__text-restriction">
-                <h1>Add new {type}</h1>
+                <h1>Edit {type}</h1>
                 {error && <p className="error">{error}</p>}
                 {loading && <p>Loading...</p>}
                 {addSucces === true && <p>Added successfully</p>}
 
-                <form onSubmit={handleSubmit(handleFormSubmit)} className="add-new-form">
-                    <AddNewForm type={type} register={register} errors={errors} />
+                <form onSubmit={handleSubmit(handleFormUpdate)} className="edit-form">
+                    <EditForm type={type} register={register} errors={errors} initialValues={data} onSub/>
                     <Button type="submit" disabled={loading}>
-                        {loading ? "Adding..." : "Add"}
+                        {loading ? "Updating..." : "Update"}
                     </Button>
                 </form>
             </div>

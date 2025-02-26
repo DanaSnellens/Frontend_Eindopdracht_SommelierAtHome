@@ -1,7 +1,7 @@
 import './Input.css';
 import React from "react";
 
-function Input({ name, inputType, labelText, options, validationRules, register, errors }) {
+function Input({ name, inputType, labelText, options, validationRules, register, errors, value }) {
 
     return (
         <>
@@ -25,6 +25,7 @@ function Input({ name, inputType, labelText, options, validationRules, register,
                         id={`${name}-field`}
                         {...register(name, validationRules)}
                         className={errors[name] ? 'input-error' : ''}
+                        defaultValue={value}
                     />
              {/*           )}*/}
                 </label>

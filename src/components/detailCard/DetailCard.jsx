@@ -5,6 +5,7 @@ import listFromString from "../../helpers/listFromString.js";
 import mapArrayToButtons from "../../helpers/mapArrayToButtons.jsx";
 import './DetailCard.css';
 import Button from "../button/Button.jsx";
+import logoHeader from "../logoHeader/LogoHeader.jsx";
 
 function DetailCard({ type, data }) {
     const {
@@ -98,6 +99,7 @@ function DetailCard({ type, data }) {
 
 
                 {type === 'wines' && (
+
                     <>
                         <h1 className={`${type}-name`}>{wineName}</h1>
                         <div className="image-wrapper">
