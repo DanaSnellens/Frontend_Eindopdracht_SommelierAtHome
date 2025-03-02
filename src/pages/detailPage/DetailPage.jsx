@@ -42,7 +42,7 @@ function DetailPage() {
             console.error('Error deleting item', error);
             setError(error.message);
         }
-    };
+    }
 
     const handleEdit = (id, username) => {
         if (user.roles.includes('ADMIN') || user.username === username) {
@@ -91,7 +91,7 @@ function DetailPage() {
         };
         console.log(data);
         void fetchData();
-    }, [type]);
+    }, [type, id]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;

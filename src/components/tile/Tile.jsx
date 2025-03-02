@@ -99,9 +99,9 @@ function Tile ( {type, data} ) {
                         </h2>
                         <p><strong>Membership: </strong>{membership}</p>
                         <p><strong>Email: </strong>{email}</p>
-                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'wineadvicerequests')}</p>
                         console.log(wineAdviceRequestIdSet)
                         console.log(wineadvicerequests)
+                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'wineadvicerequests')}</p>
                     </>
                     //TODO requests scheiden door kommas en/of in buttons met links(naar request) zetten + link naar advices
                 )}
@@ -111,11 +111,11 @@ function Tile ( {type, data} ) {
                         <h2 className={`${type}-name`}>
                             <Link to={`/wineadvicerequests/${id}`}>Request {id}</Link>
                         </h2>
-                        <p><strong>Client Username: </strong>{clientUsername}</p>
-                        <p><strong>Sommelier Username: </strong>{sommelierUsername}</p>
+                        <p><strong>Client: </strong>{clientUsername}</p>
+                        <p><strong>Sommelier: </strong>{sommelierUsername}</p>
                         <p><strong>Dinner Occasion: </strong> {dinnerOccasion}</p>
                         <p><strong>Request Message: </strong> {requestMessage}</p>
-                        <p><strong>Recipe Link: </strong> <Link to={recipeLink}>Recept</Link></p>
+                        <p><strong>Recipe Link: </strong> <Link to={recipeLink}>{recipeName}</Link></p>
 {/*                        <p><strong>Recipe File: </strong> {recipeFile}</p>*/}
                         <p><strong>Minimal Price Per Bottle: </strong> {minPricePerBottle}</p>
                         <p><strong>Maximal Price Per Bottle: </strong> {maxPricePerBottle}</p>

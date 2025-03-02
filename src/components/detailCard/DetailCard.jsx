@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import {useEffect, useState} from 'react';
+import {Link, useParams} from "react-router-dom";
 import formatPrice from "../../helpers/formatPrice.js";
 import listFromString from "../../helpers/listFromString.js";
 import mapArrayToButtons from "../../helpers/mapArrayToButtons.jsx";
