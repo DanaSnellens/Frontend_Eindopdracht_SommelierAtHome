@@ -9,19 +9,19 @@ import {getInitialValues} from "../../helpers/getInitialValues.js";
 import "./EditPage.css";
 
 
-function AddNewPage() {
-    const { type } = useParams();
+function EditPage() {
+    const { type, id, username } = useParams();
     const navigate = useNavigate();
     const { isAuth, user } = useContext(AuthContext);
-    const {id, username} = useParams();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, toggleError] = useState(null);
-    const [addSucces, toggleAddSuccess] = useState(false);
+    const [updateSucces, toggleUpdateSuccess] = useState(false);
     const { handleSubmit, register, formState: { errors } } = useForm();
 
     useEffect(() => {
         async function fetchData() {
+            setLoading(true);
             try {
                 const response = await axios.get(`http://localhost:8080/${type}/${id}`);
                 setData(response.data);
@@ -33,7 +33,7 @@ function AddNewPage() {
             }
         }
         fetchData();
-    }, [id, username]);
+    }, [id, username, type]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -67,7 +67,7 @@ function AddNewPage() {
 
             /*    const { id } = response.data;*/
             console.log('Backend response:', response.data);
-            toggleAddSuccess(true);
+            toggleUpdateSuccess(true);
 //TODO dit geeft 400 error, nog aanpassen
             /*            if((['clients', 'sommeliers'].includes(type)) ){
                             navigate(`/${type}/${username}`);
@@ -87,7 +87,7 @@ function AddNewPage() {
                 <h1>Edit {type}</h1>
                 {error && <p className="error">{error}</p>}
                 {loading && <p>Loading...</p>}
-                {addSucces === true && <p>Added successfully</p>}
+                {updateSucces === true && <p>Updated successfully</p>}
 
                 <form onSubmit={handleSubmit(handleFormUpdate)} className="edit-form">
                     <EditForm type={type} register={register} errors={errors} initialValues={data} onSub/>
@@ -100,5 +100,5 @@ function AddNewPage() {
     );
 }
 
-export default AddNewPage;
+export default EditPage;
 

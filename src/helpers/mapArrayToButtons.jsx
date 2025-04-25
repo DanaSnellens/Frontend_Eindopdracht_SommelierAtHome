@@ -23,7 +23,7 @@ function mapArrayToButtons(inputArray = {}, typeOfLink) {
     if (!arrayFromObject || arrayFromObject.length === 0) {
         return <p>No items found</p>;
     }
-
+//TODO define key/value difference between id and name (button name is different then url)
     return arrayFromObject.map(([key, value]) => (
         <Link key={key} to={`/${typeOfLink}/${key}`}>
             <Button>{value}</Button>

@@ -8,7 +8,7 @@ import Button from "../../components/button/Button.jsx";
 
 
 function AddNewPage() {
-    const { type } = useParams();
+    const { type } = useParams() ;
     const navigate = useNavigate();
     const { isAuth, user, username } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);

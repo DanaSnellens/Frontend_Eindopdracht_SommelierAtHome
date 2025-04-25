@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from '../../components/input/Input';
+import { useForm } from 'react-hook-form';
 
 function AddNewForm({ type, register, errors }) {
     const formConfig = {

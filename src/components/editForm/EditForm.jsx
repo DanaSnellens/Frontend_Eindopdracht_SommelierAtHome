@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Input from '../../components/input/Input';
 import {getInitialValues} from "../../helpers/getInitialValues.js";
 import formConfig from "../../helpers/formConfig.js";
 
 function EditForm({ type, register, errors, initialValues }) {
-    const [formValues, setFormValues] = useState(getInitialValues(type, existingData));
+    const [formValues, setFormValues] = useState(getInitialValues(type, initialValues));
+
+    useEffect(() => {
+        setFormValues(getInitialValues(type, initialValues));
+    }, [initialValues, type]);
 
 
     return (
