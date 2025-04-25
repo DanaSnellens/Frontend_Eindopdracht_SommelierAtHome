@@ -1,14 +1,14 @@
 import './Input.css';
 import React from "react";
 
-function Input({ name, inputType, labelText, options, validationRules, register, errors }) {
+function Input({ name, inputType, labelText, options, validationRules, register, errors, value }) {
 
     return (
         <>
             <div className="input-container">
                 <label htmlFor={`${name}-field`}>
                     {labelText}
-                    {inputType === 'dropdown' ? (
+{/*                    {inputType === 'dropdown' ? (
                         <select
                             id={`${name}-field`}
                             {...register(name, validationRules)}
@@ -19,14 +19,15 @@ function Input({ name, inputType, labelText, options, validationRules, register,
                                 <option key={key} value={key}>{value}</option>
                             ))}
                         </select>
-                    ) : (
+                    ) : (*/}
                     <input
                         type={inputType}
                         id={`${name}-field`}
                         {...register(name, validationRules)}
                         className={errors[name] ? 'input-error' : ''}
+                        defaultValue={value}
                     />
-                        )}
+             {/*           )}*/}
                 </label>
                 {errors[name] && <p className="error-message">{errors[name].message}</p>}
             </div>

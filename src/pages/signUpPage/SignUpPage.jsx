@@ -11,14 +11,14 @@ function SignUpPage() {
         handleSubmit,
         register,
         formState: { errors },
-        watch,
+/*        watch,*/
     } = useForm();
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    const password = watch('password');
+/*    const password = watch('password');*/
 
     const source = axios.CancelToken.source();
 /*    const[username, setUsername] = useState("");
@@ -36,18 +36,23 @@ function SignUpPage() {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8080/signup', {
+            const response = await axios.post('http://localhost:8080/clients', {
                 email: data.email,
                 username: data.username,
                 password: data.password,
+                firstName: data.firstName,
+                lastName: data.lastName,
+                profilePictureUrl: data.profilePictureUrl,
+                membership: data.membership,
+
             },{
                 cancelToken: source.token,
             });
-            console.log(response);
+            console.log(response.data);
             navigate('/signin');
         } catch (e) {
             console.error(e);
-            setError('Er is iets misgegaan bij het aanmaken van je account. Probeer het later opnieuw.');
+            setError(true);
         } finally {
             setLoading(false);
         }
@@ -56,123 +61,133 @@ function SignUpPage() {
     <>
         <section className="section-sign-up outer-content-container">
             <div className="inner-content-container__text-restriction">
-                <form onSubmit={handleSubmit(handleFormSubmit)} className= "sign-up-form">
                 <h1>Sign Up</h1>
                     <p>Om gebruik te kunnen maken van persoonlijk wijnadvies bij uw recepten heeft u een account nodig
                         U kunt kiezen voor een eenmalig wijnadvies (zonder membership) of een membership afsluiten voor regelmatig wijnadvies.
                         De kosten voor een eenmalig wijnadvies zijn 9.95 euro per recept. Met een membership kunt u voor een vast maandelijks bedrag
                         meerdere recepten uploaden en wijnadvies ontvangen. Er is de keuze uit verschillende memberships:
-                        <ul>
-                            <li>Basic: 3 recepten & wijnadviezen voor 9.95 euro per maand </li>
-                            <li>Regular: 6 recepten & wijnadviezen voor 14.95 euro per maand</li>
-                            <li>Premium: 9 recepten & wijnadviezen voor 19.95 euro per maand</li>
-                        </ul>
                     </p>
+                    <ul>
+                        <li>Basic: 3 recepten & wijnadviezen voor 9.95 euro per maand </li>
+                        <li>Regular: 6 recepten & wijnadviezen voor 14.95 euro per maand</li>
+                        <li>Premium: 9 recepten & wijnadviezen voor 19.95 euro per maand</li>
+                    </ul>
+
+                <form onSubmit={handleSubmit(handleFormSubmit)} className= "sign-up-form">
                     <Input
-                        label="Username"
-                        name="username"
-                        register={register}
-                        validation={{ required: "Username is required" }}
-                        errors={errors}
-                    />
+                                labelText="Username"
+                                name="username"
+                                inputType="text"
+                                register={register}
+                                validation={{ required: "Username is required" }}
+                                errors={errors}
+                            />
 
-                    <Input
-                        label="First Name"
-                        name="firstName"
-                        register={register}
-                        validation={{ required: "First Name is required" }}
-                        errors={errors}
-                    />
+                            <Input
+                                labelText="First Name"
+                                name="firstName"
+                                inputType="text"
+                                register={register}
+                                validation={{ required: "First Name is required" }}
+                                errors={errors}
+                            />
 
-                    <Input
-                        label="Last Name"
-                        name="lastName"
-                        register={register}
-                        validation={{ required: "Last Name is required" }}
-                        errors={errors}
-                    />
+                            <Input
+                                labelText="Last Name"
+                                name="lastName"
+                                inputType="text"
+                                register={register}
+                                validation={{ required: "Last Name is required" }}
+                                errors={errors}
+                            />
 
-                    <Input
-                        label="Email"
-                        name="email"
-                        type="email"
-                        register={register}
-                        validation={{
-                            required: "Email is required",
-                            pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
-                        }}
-                        errors={errors}
-                    />
+                            <Input
+                                labelText="Email"
+                                name="email"
+                                inputType="email"
+                                register={register}
+                                validation={{
+                                    required: "Email is required",
+                                    pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
+                                }}
+                                errors={errors}
+                            />
 
-                    <Input
-                        label="Profile Picture URL"
-                        name="profilePictureUrl"
-                        type="url"
-                        register={register}
-                        validation={{
-                            required: "Profile Picture URL is required",
-                            pattern: {
-                                value: /^(http|https):\/\/[^ "]+$/,
-                                message: "Invalid URL",
-                            },
-                        }}
-                        errors={errors}
-                    />
+                            <Input
+                                labelText="Profile Picture URL"
+                                name="profilePictureUrl"
+                                inputType="url"
+                                register={register}
+                                validation={{
+                                    required: "Profile Picture URL is required",
+                                    pattern: {
+                                        value: /^(http|https):\/\/[^ "]+$/,
+                                        message: "Invalid URL",
+                                    },
+                                }}
+                                errors={errors}
+                            />
 
-                    <div>
-                        <label htmlFor="membership">Membership</label>
-                        <select
-                            id="membership"
-                            {...register("membership", { required: "Membership is required" })}
-                            className={errors.membership ? "error" : ""}
-                        >
-                            <option value="">Select Membership</option>
-                            <option value="none">None</option>
-                            <option value="basic">Basic</option>
-                            <option value="regular">Regular</option>
-                            <option value="premium">Premium</option>
-                        </select>
-                        {errors.membership && (
-                            <p className="error-message">{errors.membership.message}</p>
-                        )}
-                    </div>
+                            <div>
+                                <label htmlFor="membership">Membership</label>
+                                <select
+                                    id="membership"
+                                    {...register("membership", { required: "Membership is required" })}
+                                    className={errors.membership ? "error" : ""}
+                                >
+                                    <option value="">Select Membership</option>
+                                    <option value="NONE">None</option>
+                                    <option value="BASIC">Basic</option>
+                                    <option value="REGULAR">Regular</option>
+                                    <option value="PREMIUM">Premium</option>
+                                </select>
+                                {errors.membership && (
+                                    <p className="error-message">{errors.membership.message}</p>
+                                )}
+                            </div>
 
-                    <Input
-                        label="Password"
-                        name="password"
-                        type="password"
-                        register={register}
-                        validation={{
-                            required: "Password is required",
-                            minLength: {
-                                value: 8,
-                                message: "Password must be at least 8 characters long",
-                            },
-                        }}
-                        errors={errors}
-                    />
+                            <Input
+                                labelText="Password"
+                                name="password"
+                                inputType="password"
+                                register={register}
+                                validation={{
+                                    required: "Password is required",
+                                    minLength: {
+                                        value: 8,
+                                        message: "Password must be at least 8 characters long",
+                                    },
+                                }}
+                                errors={errors}
+                            />
 
-                    <Input
-                        label="Confirm Password"
-                        name="passwordCheck"
-                        type="password"
-                        register={register}
-                        validation={{
-                            required: "Password confirmation is required",
-                            validate: (value) =>
-                                value === password || "Passwords do not match",
-                        }}
-                        errors={errors}
-                    />
+{/*                            <Input
+                                labelText="Confirm Password"
+                                name="passwordCheck"
+                                type="password"
+                                register={register}
+                                validation={{
+                                    required: "Password confirmation is required",
+                                    validate: (value) =>
+                                        value === password || "Passwords do not match",
+                                }}
+                                errors={errors}
+                            />*/}
 
-                    <div className="checkbox-container">
-                        <label>
-                            <input type="checkbox" {...register("newsletter")} />
-                            I want to receive newsletters
-                        </label>
-                    </div>
+                            <div className="checkbox-container">
+                                <label>
+                                    <input type="checkbox" {...register("newsletter")} />
+                                    I want to receive newsletters
+                                </label>
+                            </div>
 
-                    <Button type="submit">Sign Up</Button>
+                            <Button
+                                type="submit"
+                                className="primary"
+                                onClicik={handleFormSubmit}
+                                disabled={loading}>
+                                Sign Up
+                            </Button>
                 </form>
             </div>
         </section>

@@ -19,6 +19,7 @@ import AddNewPage from "./pages/addNewPage/AddNewPage.jsx";
 import OverviewPage from "./pages/overviewPage/OverviewPage.jsx";
 import SignUpPage from "./pages/signUpPage/SignUpPage.jsx";
 import SendMessagePage from "./pages/sendMessagePage/SendMessagePage.jsx";
+import EditPage from "./pages/editPage/EditPage.jsx";
 
 function App() {
 
@@ -45,8 +46,7 @@ function App() {
 
 
                     <Route path="/:type/addnew" element={<AddNewPage/>}/>
-{/*                    //Aanpassen naar edit page??*/}
-                    <Route path="/:type/:id/edit" element={<AddNewPage/>}/>
+                    <Route path="/:type/:id/edit" element={<EditPage/>}/>
                     <Route path="/signin" element={<SignInPage/>}/>
                     <Route path="/register" element={<SignUpPage/>}/>
                     <Route path="/signout" element={<Navigate to="/"/>}/>

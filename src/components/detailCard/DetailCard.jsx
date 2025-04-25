@@ -1,10 +1,11 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import {useEffect, useState} from 'react';
+import {Link, useParams} from "react-router-dom";
 import formatPrice from "../../helpers/formatPrice.js";
 import listFromString from "../../helpers/listFromString.js";
 import mapArrayToButtons from "../../helpers/mapArrayToButtons.jsx";
 import './DetailCard.css';
 import Button from "../button/Button.jsx";
+import logoHeader from "../logoHeader/LogoHeader.jsx";
 
 function DetailCard({ type, data }) {
     const {
@@ -54,7 +55,10 @@ function DetailCard({ type, data }) {
         maxPricePerBottle,
         clientUsername,
         sommelierUsername,
-        wineAdviceId
+        wineAdviceId,
+        personalMessage,
+        adviceExplanation,
+        wineAdviceRequestId
     } = data;
 
 /*    const unorderedList = (list) => { */
@@ -74,7 +78,7 @@ function DetailCard({ type, data }) {
                         <p><strong>Experience: </strong> {experienceInYears} years</p>
                         <p><strong>CV: </strong><span className="detail-card-list" dangerouslySetInnerHTML={{ __html: listFromString(curriculumVitae) }}/></p>
                         <p><strong>Description: </strong> {sommelierDescription}</p>
-                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'sommeliers')}</p>
+                        <p><strong>Requests: </strong></p>{mapArrayToButtons(wineAdviceRequestIdSet, 'wineadvicerequests')}
                         <Link to={'/message'}>
                             <Button> Send message </Button>
                         </Link>
@@ -89,12 +93,13 @@ function DetailCard({ type, data }) {
                         </div>
                         <p><strong>Email: </strong> {email}</p>
                         <p><strong>Membership: </strong> {membership}</p>
-                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'clients')}</p>
+                        <p><strong>Requests: </strong></p> {mapArrayToButtons(wineAdviceRequestIdSet, 'wineadvicerequests')}
                     </>
                 )}
 
 
                 {type === 'wines' && (
+
                     <>
                         <h1 className={`${type}-name`}>{wineName}</h1>
                         <div className="image-wrapper">
@@ -107,10 +112,10 @@ function DetailCard({ type, data }) {
                         <p><strong>Producer: </strong>{producer}</p>
                         <p><strong>Vintage: </strong>{year}</p>
                         <p><strong>Aromas: </strong>{aromas}</p>
-                        <p><strong>Price: </strong>{formatPrice(price)}</p>
+                        <p><strong>Price: </strong></p>{price !=null ? formatPrice(price) : 'Price is not available'}
                         <p><strong>Description: </strong>{longDescription}</p>
                         <p><strong>Food Pairing: </strong>{foodPairing}</p>
-                        <p><strong>Our recommended recipes: </strong>{mapArrayToButtons(recipeIdSet, 'recipes')}</p>
+                        <p><strong>Our recommended recipes: </strong></p>{mapArrayToButtons(recipeIdSet, 'recipes')}
                     </>
                 )}
 
@@ -127,7 +132,7 @@ function DetailCard({ type, data }) {
                         <p><strong>Other ingredients: </strong>{otherIngredients}</p>
                         <p><strong>Description: </strong>{preparationLongDescription}</p>
                         <p><strong>Wine pairing: </strong>{winePairing}</p>
-                        <p><strong>Our recommended wines: </strong>{mapArrayToButtons(wineIdSet, 'wines')}</p>
+                        <p><strong>Our recommended wines: </strong></p>{mapArrayToButtons(wineIdSet, 'wines')}
                     </>
                 )}
                 {type === 'wineadvicerequests' && (
@@ -135,18 +140,30 @@ function DetailCard({ type, data }) {
                         <h1 className={`${type}-name`}>Request {id}</h1>
                         <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
                         <p><strong>Client Username: </strong>{clientUsername}</p>
-                        <p><strong>Sommelier Username: </strong>{sommelierUsername}</p>
+                        <p><strong>Sommelier Username: </strong> <Link to={`sommeliers/${sommelierUsername}`}>{sommelierUsername}</Link></p>
                         <p><strong>Dinner Occasion: </strong>{dinnerOccasion}</p>
                         <p><strong> Request Message: </strong>{requestMessage}</p>
                         <p><strong>Recipe Link </strong>{recipeLink}</p>
 {/*                        <p><strong>Recipe File: </strong>{recipeFile}</p>*/}
-                        <p><strong>Minimal Price Per Bottle </strong>{minPricePerBottle}</p>
+                        <p><strong>Minimal Price Per Bottle </strong></p>{price !=null ? formatPrice(minPricePerBottle) : 'Minimal price is not available'}
                         <p><strong>Maximal Price Per Bottle </strong>{maxPricePerBottle}</p>
                         <p><strong>Wine Advice: </strong>Hier komt een link naar het wijnadvies als die er is, anders een link naar addnew wineadvice {wineAdviceId}</p>
                         <p><strong>Our recommended wines: </strong> </p>
-                        {mapArrayToButtons(wineIdSet, 'wineadvicerequests')}
+                        {wineIdSet != null ? mapArrayToButtons(wineIdSet, 'wines')
+                            : <Link to={'/wines/addnew'}> <Button>Add wines</Button></Link> }
                     </>
                 )}
+                {type === 'wineadvices' && (
+                    <>
+                        <h2 className={`${type}-name`}>
+                            <Link to={`/wineadvices/${id}`}>Advice {id}</Link>
+                        </h2>
+                        <p><strong>Personal message: </strong>{personalMessage}</p>
+                        <p><strong>Advice Explanation: </strong>{adviceExplanation}</p>
+                        <p><strong>Recommended wines: </strong> </p>{mapArrayToButtons(wineIdSet, 'wines')}
+                        <p><strong>Request: </strong> </p> <Link key={wineAdviceRequestId} to={`/wineadvicerequests/${wineAdviceRequestId}`}> <Button>{wineAdviceId}</Button></Link>
+                    </>
+                    )}
             </article>
         </>
 

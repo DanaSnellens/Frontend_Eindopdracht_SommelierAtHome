@@ -1,3 +1,67 @@
+/* Outer container for the header */
+/*.logo-header-section {
+    position: relative; !* Necessary for positioning child elements *!
+    display: flex;
+    align-items: center;
+    justify-content: center; !* Center the logo horizontally *!
+    padding: 10px 20px;
+    background-color: #f8f8f8; !* Adjust the background color *!
+    border-bottom: 1px solid #ddd; !* Optional: a border for separation *!
+    height: 80px; !* Set a fixed height for the header *!
+}*/
+
+/* Logo container */
+/*.logo-header {
+    display: flex;
+    align-items: center;
+    z-index: 1; !* Ensures the logo is on top of other content *!
+}*/
+
+.image-wrapper {
+    max-width: 200px; /* Adjust width as necessary */
+}
+
+.image-wrapper img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Side navigation container */
+/*.side-nav-container {
+    position: absolute; !* Allows the navigation to "float" over the header *!
+    top: 0; !* Aligns the top of the navigation with the header *!
+    left: 0; !* Positions the navigation at the left side of the page *!
+    width: 250px; !* Fixed width for the navigation *!
+    background-color: #ffffff; !* Background color for the navigation *!
+    border-right: 1px solid #ddd; !* Optional: Border to separate nav from content *!
+    height: 100vh; !* Full height to cover the entire page vertically *!
+    overflow-y: auto; !* Adds scroll behavior if the navigation is too long *!
+    z-index: 2; !* Ensures it appears above the header *!
+    padding: 15px; !* Add padding for inner content *!
+}*/
+
+.side-nav-container ul {
+    list-style-type: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+}
+
+.side-nav-container li {
+    margin: 10px 0;
+}
+
+.side-nav-container a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Adjust link color */
+    font-weight: bold;
+}
+
+.side-nav-container a:hover {
+    color: #007bff; /* Highlight color on hover */
+}
+
+
+/*
 
 .logo-header {
     display: block;
@@ -7,3 +71,52 @@
     justify-self: center;
 
 }
+*/
+/*.side-nav-container {
+    display: flex;
+    flex-basis: 200px;
+    justify-content: space-between;
+    margin-left: 0;
+    background-color: #ffffff;
+    border: 1px solid black;
+    padding: 10px 15px;
+    border-radius: 5px;
+}*/
+/*
+
+.side-nav-container ul {
+    list-style-type: none; !* Remove default bullet points *!
+    margin: 0;
+    padding: 0;
+}
+
+.side-nav-container li {
+    margin: 5px 0;
+}
+
+.side-nav-container a {
+    text-decoration: none; !* Remove underline from links *!
+    color: #333; !* Adjust link color *!
+    font-weight: bold;
+}
+
+.side-nav-container a:hover {
+    color: #007bff; !* Highlight color on hover *!
+}
+
+!* Logo header container *!
+.logo-header {
+    display: flex;
+    align-items: center;
+    flex: 1; !* Allow the logo to take up remaining space *!
+}
+
+.image-wrapper {
+    max-width: 200px; !* Adjust width as necessary *!
+}
+
+.image-wrapper img {
+    max-width: 100%; !* Ensure the image is responsive *!
+    height: auto; !* Maintain aspect ratio *!
+}
+*/

@@ -66,8 +66,6 @@ function SignInPage() {
                             {error && <p className="error">De combinatie van username en wachtwoord is onjuist</p>}
                             <Button
                                 type="submit"
-
-
                                 className="primary"
                                 buttonText="Sign In"
                                 onClick={handleFormSubmit}

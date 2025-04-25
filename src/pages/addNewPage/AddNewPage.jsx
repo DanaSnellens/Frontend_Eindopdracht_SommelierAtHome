@@ -8,40 +8,46 @@ import Button from "../../components/button/Button.jsx";
 
 
 function AddNewPage() {
-    const { type } = useParams();
+    const { type } = useParams() ;
     const navigate = useNavigate();
     const { isAuth, user, username } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [error, toggleError] = useState(null);
+    const [addSucces, toggleAddSuccess] = useState(false);
     const { handleSubmit, register, formState: { errors } } = useForm();
     async function handleFormSubmit(data) {
         setLoading(true);
         toggleError(false);
+/*        data.preventDefault();*/
         const token = localStorage.getItem('token');
         console.log(data);
 
-/*        let postData = {};
-        switch ()*/
+/*        let postData = {};*/
+
 
         try {
-            if (type === 'clients') {
-                await axios.post(`http://localhost:8080/${type}`, data, {
-                });
-            } else {
-                await axios.post(`http://localhost:8080/${type}`, data, {
+            const response = await axios.post(
+                `http://localhost:8080/${type}`,
+                data,
+                type === 'clients'
+                ? {}
+                : {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                });
-            }
+                }
+                );
 
-            //TODO hij moet navigeren naar de letterlijke url hieronder, maar plakt dit nu achter dashboard
-            if (['clients', 'sommeliers'].includes(type)) {
+        /*    const { id } = response.data;*/
+            console.log('Backend response:', response.data);
+            toggleAddSuccess(true);
+//TODO dit geeft 400 error, nog aanpassen
+/*            if((['clients', 'sommeliers'].includes(type)) ){
                 navigate(`/${type}/${username}`);
             } else {
-                navigate(`/${type}/id`);
-            }
+                navigate(`/${type}/${id}`);
+            }*/
         } catch (e) {
             toggleError(e.message);
         } finally {
@@ -54,6 +60,9 @@ function AddNewPage() {
             <div className="inner-content-container__text-restriction">
                 <h1>Add new {type}</h1>
                 {error && <p className="error">{error}</p>}
+                {loading && <p>Loading...</p>}
+                {addSucces === true && <p>Added successfully</p>}
+
                 <form onSubmit={handleSubmit(handleFormSubmit)} className="add-new-form">
                     <AddNewForm type={type} register={register} errors={errors} />
                     <Button type="submit" disabled={loading}>

@@ -13,7 +13,7 @@ function DetailPage() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const handleDelete = async (id, username) => {
+    async function handleDelete (id, username) {
         /* if */(window.confirm('Are you sure you want to delete this item?')) ? console.log('yes') : console.log('no');
         const token = localStorage.getItem('token');
         try {
@@ -42,7 +42,7 @@ function DetailPage() {
             console.error('Error deleting item', error);
             setError(error.message);
         }
-    };
+    }
 
     const handleEdit = (id, username) => {
         if (user.roles.includes('ADMIN') || user.username === username) {
@@ -57,7 +57,8 @@ function DetailPage() {
         const fetchData = async () => {
             const token = localStorage.getItem('token');
             try {
-                if ((['clients', 'wineadvicerequests'].includes(type)) && (user.roles.includes('ADMIN') || user.username === id)) {
+                //TODO klopt het laatste stukje volgende regel? (id || username)
+                if ((['clients', 'wineadvicerequests', 'wineadvices'].includes(type)) && (user.roles.includes('ADMIN') || user.username === (id || username))) {
                     const response = await axios.get(`http://localhost:8080/${type}/${id}`, {
                         headers: {
                             "Content-Type": "application/json",
@@ -65,10 +66,15 @@ function DetailPage() {
                         }
                     });
                     console.log(response.data);
+                    console.log(type);
+                    console.log(id);
                     setData(response.data);
                 } else {
                     const response = await axios.get(`http://localhost:8080/${type}/${id}`);
                     setData(response.data);
+                    console.log(response.data);
+                    console.log(type);
+                    console.log(id);
                 }
 /*                const response = await axios.get(`http://localhost:8080/${type}/${id}`, {
 /!*                    headers: {
@@ -86,7 +92,7 @@ function DetailPage() {
         };
         console.log(data);
         void fetchData();
-    }, []);
+    }, [type, id]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
@@ -100,13 +106,13 @@ function DetailPage() {
                     {isAuth && user.roles.includes('ADMIN') && (
                         <section className="isAuth-buttons-section">
                             <Button type="button" clickHandler={() => handleDelete(data.id, data.username)}>Delete</Button>
-                            <Button type={"button"} clickHandler={() => handleEdit(data.id, data.username)}>Adjust</Button>
+                            <Button type={"button"} clickHandler={() => handleEdit(data.id, data.username)}>Edit</Button>
                         </section>
                     )}
                     {isAuth && user.roles.includes('CLIENT') && (
                         <section className="isAuth-buttons-section">
                             <Button type="button" clickHandler={() => handleDelete(data.id, data.username)}>Delete</Button>
-                            <Button type={"button"} clickHandler={() => handleEdit(data.id, data.username)}>Adjust</Button>
+                            <Button type={"button"} clickHandler={() => handleEdit(data.id, data.username)}>Edit</Button>
                         </section>
                     )}
                 </div>

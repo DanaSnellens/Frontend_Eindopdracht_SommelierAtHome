@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import mapArrayToButtons from "../../helpers/mapArrayToButtons.jsx";
+import Button from "../button/Button.jsx";
 
 function Tile ( {type, data} ) {
     const{
@@ -36,7 +37,11 @@ function Tile ( {type, data} ) {
         maxPricePerBottle,
         clientUsername,
         sommelierUsername,
-        wineAdviceId
+        wineAdviceId,
+        personalMessage,
+        adviceExplanation,
+        wineIdSet,
+        wineAdviceRequestId
     } = data;
 
     return (
@@ -94,7 +99,9 @@ function Tile ( {type, data} ) {
                         </h2>
                         <p><strong>Membership: </strong>{membership}</p>
                         <p><strong>Email: </strong>{email}</p>
-                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet)}</p>
+                        console.log(wineAdviceRequestIdSet)
+                        console.log(wineadvicerequests)
+                        <p><strong>Requests: </strong> {mapArrayToButtons(wineAdviceRequestIdSet, 'wineadvicerequests')}</p>
                     </>
                     //TODO requests scheiden door kommas en/of in buttons met links(naar request) zetten + link naar advices
                 )}
@@ -104,15 +111,29 @@ function Tile ( {type, data} ) {
                         <h2 className={`${type}-name`}>
                             <Link to={`/wineadvicerequests/${id}`}>Request {id}</Link>
                         </h2>
-                        <p><strong>Client Username: </strong>{clientUsername}</p>
-                        <p><strong>Sommelier Username: </strong>{sommelierUsername}</p>
+                        <p><strong>Client: </strong>{clientUsername}</p>
+                        <p><strong>Sommelier: </strong>{sommelierUsername}</p>
                         <p><strong>Dinner Occasion: </strong> {dinnerOccasion}</p>
                         <p><strong>Request Message: </strong> {requestMessage}</p>
-                        <p><strong>Recipe Link: </strong> <Link to={recipeLink}>Recept</Link></p>
+                        <p><strong>Recipe Link: </strong> <Link to={recipeLink}>{recipeName}</Link></p>
 {/*                        <p><strong>Recipe File: </strong> {recipeFile}</p>*/}
                         <p><strong>Minimal Price Per Bottle: </strong> {minPricePerBottle}</p>
                         <p><strong>Maximal Price Per Bottle: </strong> {maxPricePerBottle}</p>
-                        <p><strong>Wine Advice: </strong> {wineAdviceId}</p>
+                        <p><strong>Wine Advice: </strong> </p>
+                        <Link key={wineAdviceId} to={`/wineadvices/${wineAdviceId}`}> <Button>{wineAdviceId}</Button></Link>
+                    </>
+                    //TODO wineadvice: wel of niet aanwezig. Als niet aanwezig: doorlinken naar addnew wineadvice
+                )}
+
+                {type === 'wineadvices' && (
+                    <>
+                        <h2 className={`${type}-name`}>
+                            <Link to={`/wineadvices/${id}`}>Advice {id}</Link>
+                        </h2>
+                        <p><strong>Personal message: </strong>{personalMessage}</p>
+                        <p><strong>Advice Explanation: </strong>{adviceExplanation}</p>
+                        <p><strong>Recommended wines: </strong> {wineIdSet}</p>
+                        <p><strong>Request: </strong> </p> <Link key={wineAdviceRequestId} to={`/wineadvicerequests/${wineAdviceRequestId}`}> <Button>{wineAdviceId}</Button></Link>
                     </>
                     //TODO wineadvice: wel of niet aanwezig. Als niet aanwezig: doorlinken naar addnew wineadvice
                 )}
