@@ -149,9 +149,6 @@ function DetailCard({ type, data }) {
                         <p><strong>Maximal Price Per Bottle </strong>{maxPricePerBottle}</p>
                         <p><strong>Wine Advice: </strong></p> {wineAdviceId != null ? <Link key={wineAdviceId} to={`/wineadvices/${wineAdviceId}`}> <Button>{wineAdviceId}</Button></Link>
                             : <Link to={'/wineadvices/addnew'}> <Button>Add wine advice</Button></Link>}
-                        <p><strong>Our recommended wines: </strong> </p>
-                        {wineIdSet != null ? mapArrayToButtons(wineIdSet, 'wines')
-                            : <Link to={'/wines/addnew'}> <Button>Add wines</Button></Link> }
                     </section>
                 )}
                 {type === 'wineadvices' && (
@@ -159,7 +156,9 @@ function DetailCard({ type, data }) {
                         <h2 className={`${type}-name`}>Advice {id}</h2>
                         <p><strong>Personal message: </strong>{personalMessage}</p>
                         <p><strong>Advice Explanation: </strong>{adviceExplanation}</p>
-                        <p><strong>Recommended wines: </strong></p>{mapArrayToButtons(wineIdSet, 'wines')}
+                        <p><strong>Recommended wines: </strong></p>
+                        {wineIdSet != null ? mapArrayToButtons(wineIdSet, 'wines')
+                            : <Link to={'/wines/addnew'}> <Button>Add wines</Button></Link> }
                         <p><strong>Request: </strong> </p> <Link key={wineAdviceRequestId} to={`/wineadvicerequests/${wineAdviceRequestId}`}> <Button>{wineAdviceId}</Button></Link>
                     </section>
                 )}

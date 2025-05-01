@@ -42,7 +42,8 @@ function AddNewPage() {
         /*    const { id } = response.data;*/
             console.log('Backend response:', response.data);
             toggleAddSuccess(true);
-//TODO dit geeft 400 error, nog aanpassen
+            navigate(`/${type}/${data.username || data.id}`);
+//TODO dit geeft 400 error, nog aanpassen (of is dit opgelost met bovenstaande?)
 /*            if((['clients', 'sommeliers'].includes(type)) ){
                 navigate(`/${type}/${username}`);
             } else {

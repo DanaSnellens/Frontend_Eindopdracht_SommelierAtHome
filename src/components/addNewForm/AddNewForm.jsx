@@ -1,8 +1,12 @@
 import React from 'react';
 import Input from '../../components/input/Input';
+import { useWineSelector } from "../../hooks/useWineSelector";
 import { useForm } from 'react-hook-form';
+import "./AddNewForm.css";
 
 function AddNewForm({ type, register, errors }) {
+
+    const { selectedWineIds } = useWineSelector();
     const formConfig = {
         wines: [
             { name: "wineName", labelText: "Wine Name", inputType: "text", validationRules: { required: "Wine name is required" } },
@@ -68,6 +72,13 @@ function AddNewForm({ type, register, errors }) {
 /*            { name: "recipeFile", labelText: "Recipe File", inputType: "text"},*/
             { name: "minPricePerBottle", labelText: "Minimal price per bottle", inputType: "dropdown", validationRules: { required: "Minimal price is required"} },
             { name: "maxPricePerBottle", labelText: "Maximal price per bottle", inputType: "dropdown", validationRules: { required: "Maximal price is required"} },
+        ],
+
+        wineadvices: [
+            { name: "personalMessage", labelText: "Personal Message", inputType: "text", validationRules: { required: "Personal message is required" } },
+            { name: "adviceExplanation", labelText: "Advice Explanation", inputType: "text", validationRules: { required: "Advice Explanation is required" } },
+            { name: "wineIdSet", labelText: "Recommended Wines", inputType: "dropdown", options: selectedWineIds.map(wineIdSet => (value: selectedWineIds.id, label: selectedWineIds.name })),  validationRules: { required: "Recommended wines are required" } },
+            //TODO WAR id moet automatisch toegevoegd worden, maar gebeurt mss nog niet? InputDTO aanpassen?
         ],
     };
 
