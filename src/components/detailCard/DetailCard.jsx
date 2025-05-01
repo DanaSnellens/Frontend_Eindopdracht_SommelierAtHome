@@ -67,7 +67,7 @@ function DetailCard({ type, data }) {
         <>
             <article className={`${type}-detailCard`}>
                 {type === 'sommeliers' && (
-                    <>
+                    <section>
                         <h2 className={`${type}-name`}>{firstName} {lastName}</h2>
                         <div className="image-wrapper">
                         <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl}/>
@@ -82,11 +82,11 @@ function DetailCard({ type, data }) {
                         <Link to={'/message'}>
                             <Button> Send message </Button>
                         </Link>
-                    </>
+                    </section>
                 )}
 
                 {type === 'clients' && (
-                    <>
+                    <section>
                         <h2 className={`${type}-name`}>{firstName} {lastName}</h2>
                         <div className="image-wrapper">
                         <img className={`${type}-image`} alt={profilePictureAlt} src={profilePictureUrl}/>
@@ -94,14 +94,14 @@ function DetailCard({ type, data }) {
                         <p><strong>Email: </strong> {email}</p>
                         <p><strong>Membership: </strong> {membership}</p>
                         <p><strong>Requests: </strong></p> {mapArrayToButtons(wineAdviceRequestIdSet, 'wineadvicerequests')}
-                    </>
+                    </section>
                 )}
 
 
                 {type === 'wines' && (
 
-                    <>
-                        <h1 className={`${type}-name`}>{wineName}</h1>
+                    <section>
+                        <h2 className={`${type}-name`}>{wineName}</h2>
                         <div className="image-wrapper">
                             <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
                         </div>
@@ -116,12 +116,12 @@ function DetailCard({ type, data }) {
                         <p><strong>Description: </strong>{longDescription}</p>
                         <p><strong>Food Pairing: </strong>{foodPairing}</p>
                         <p><strong>Our recommended recipes: </strong></p>{mapArrayToButtons(recipeIdSet, 'recipes')}
-                    </>
+                    </section>
                 )}
 
                 {type === 'recipes' && (
-                    <>
-                        <h1 className={`${type}-name`}>{recipeName}</h1>
+                    <section>
+                        <h2 className={`${type}-name`}>{recipeName}</h2>
                         <div className="image-wrapper">
                             <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
                         </div>
@@ -133,11 +133,11 @@ function DetailCard({ type, data }) {
                         <p><strong>Description: </strong>{preparationLongDescription}</p>
                         <p><strong>Wine pairing: </strong>{winePairing}</p>
                         <p><strong>Our recommended wines: </strong></p>{mapArrayToButtons(wineIdSet, 'wines')}
-                    </>
+                    </section>
                 )}
                 {type === 'wineadvicerequests' && (
-                    <>
-                        <h1 className={`${type}-name`}>Request {id}</h1>
+                    <section>
+                        <h2 className={`${type}-name`}>Request {id}</h2>
                         <img className={`${type}-image`} alt={imageAlt} src={imageLink}/>
                         <p><strong>Client Username: </strong>{clientUsername}</p>
                         <p><strong>Sommelier Username: </strong> <Link to={`sommeliers/${sommelierUsername}`}>{sommelierUsername}</Link></p>
@@ -147,23 +147,22 @@ function DetailCard({ type, data }) {
 {/*                        <p><strong>Recipe File: </strong>{recipeFile}</p>*/}
                         <p><strong>Minimal Price Per Bottle </strong></p>{price !=null ? formatPrice(minPricePerBottle) : 'Minimal price is not available'}
                         <p><strong>Maximal Price Per Bottle </strong>{maxPricePerBottle}</p>
-                        <p><strong>Wine Advice: </strong>Hier komt een link naar het wijnadvies als die er is, anders een link naar addnew wineadvice {wineAdviceId}</p>
+                        <p><strong>Wine Advice: </strong></p> {wineAdviceId != null ? <Link key={wineAdviceId} to={`/wineadvices/${wineAdviceId}`}> <Button>{wineAdviceId}</Button></Link>
+                            : <Link to={'/wineadvices/addnew'}> <Button>Add wine advice</Button></Link>}
                         <p><strong>Our recommended wines: </strong> </p>
                         {wineIdSet != null ? mapArrayToButtons(wineIdSet, 'wines')
                             : <Link to={'/wines/addnew'}> <Button>Add wines</Button></Link> }
-                    </>
+                    </section>
                 )}
                 {type === 'wineadvices' && (
-                    <>
-                        <h2 className={`${type}-name`}>
-                            <Link to={`/wineadvices/${id}`}>Advice {id}</Link>
-                        </h2>
+                    <section>
+                        <h2 className={`${type}-name`}>Advice {id}</h2>
                         <p><strong>Personal message: </strong>{personalMessage}</p>
                         <p><strong>Advice Explanation: </strong>{adviceExplanation}</p>
-                        <p><strong>Recommended wines: </strong> </p>{mapArrayToButtons(wineIdSet, 'wines')}
+                        <p><strong>Recommended wines: </strong></p>{mapArrayToButtons(wineIdSet, 'wines')}
                         <p><strong>Request: </strong> </p> <Link key={wineAdviceRequestId} to={`/wineadvicerequests/${wineAdviceRequestId}`}> <Button>{wineAdviceId}</Button></Link>
-                    </>
-                    )}
+                    </section>
+                )}
             </article>
         </>
 
