@@ -93,6 +93,8 @@ function DetailCard({ type, data }) {
                         </div>
                         <p><strong>Email: </strong> {email}</p>
                         <p><strong>Membership: </strong> {membership}</p>
+{/*                        <p><strong>Requests: </strong></p> {wineAdviceRequestIdSet != null ? <Link key={wineAdviceRequestId} to={`/wineadvices/${wineAdviceId}`}> <Button>{wineAdviceId}</Button></Link>
+                        : <Link to={'/wineadvices/addnew'}> <Button>Add wine advice</Button></Link>}*/}
                         <p><strong>Requests: </strong></p> {mapArrayToButtons(wineAdviceRequestIdSet, 'wineadvicerequests')}
                     </section>
                 )}
@@ -159,7 +161,7 @@ function DetailCard({ type, data }) {
                         <p><strong>Recommended wines: </strong></p>
                         {wineIdSet != null ? mapArrayToButtons(wineIdSet, 'wines')
                             : <Link to={'/wines/addnew'}> <Button>Add wines</Button></Link> }
-                        <p><strong>Request: </strong> </p> <Link key={wineAdviceRequestId} to={`/wineadvicerequests/${wineAdviceRequestId}`}> <Button>{wineAdviceId}</Button></Link>
+                        <p><strong>Request: </strong> </p> <Link key={wineAdviceRequestId} to={`/wineadvicerequests/${wineAdviceRequestId}`}> <Button>{wineAdviceRequestId}</Button></Link>
                     </section>
                 )}
             </article>

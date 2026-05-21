@@ -92,7 +92,7 @@ function DetailPage() {
         };
         console.log(data);
         void fetchData();
-    }, [type, id]);
+    }, [type, id/*, data, user.roles, user.username, username*/]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;

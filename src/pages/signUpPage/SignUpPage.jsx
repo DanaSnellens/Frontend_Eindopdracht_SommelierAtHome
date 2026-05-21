@@ -30,33 +30,6 @@ function SignUpPage() {
         };
     }, []);
 
-    async function handleFormSubmit(data) {
-        console.log(data)
-        setError(false);
-        setLoading(true);
-
-        try {
-            const response = await axios.post('http://localhost:8080/clients', {
-                email: data.email,
-                username: data.username,
-                password: data.password,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                profilePictureUrl: data.profilePictureUrl,
-                membership: data.membership,
-
-            },{
-                cancelToken: source.token,
-            });
-            console.log(response.data);
-            navigate('/signin');
-        } catch (e) {
-            console.error(e);
-            setError(true);
-        } finally {
-            setLoading(false);
-        }
-    }
   return (
     <>
         <section className="section-sign-up outer-content-container">
