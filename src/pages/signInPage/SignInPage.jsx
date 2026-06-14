@@ -17,7 +17,6 @@ function SignInPage() {
 
     useEffect(() => {
         return function cleanup() {
-/*            source.cancel('Operation canceled.');*/
         }
     }, []);
 
