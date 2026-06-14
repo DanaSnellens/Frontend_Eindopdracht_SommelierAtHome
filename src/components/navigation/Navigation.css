@@ -3,7 +3,6 @@
     padding: 16px 0;
     justify-content: space-between;
     gap: 50px;
-    border: 2px solid black;
 }
 
 .main-navigation-links {
@@ -24,14 +23,11 @@
     flex-basis: 1400px;
     flex-shrink: 1;
     flex-grow: 0;
-    /*We voegen margin toe aan de linker- en rechterkant, zodat de content nooit helemaal tegen de rand gedrukt kan worden*/
     margin: 0 20px;
-    /*We zorgen er ook voor dat deze flex-item op haar beurt ook weer een flexbox container is, waarin alle children onder elkaar komen te staan*/
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 2px dotted red;
 }
 
 .main-navigation-links {
@@ -41,7 +37,6 @@
     flex-direction: row;
     align-self: center;
     justify-content: space-between;
-    border: 2px solid green;
 }
 .is-auth-nav-list {
     list-style: none;
@@ -50,5 +45,4 @@
     flex-direction: row;
     align-self: center;
     justify-content: space-between;
-    border: 2px solid green;
 }
