@@ -21,8 +21,6 @@ function SignUpPage() {
 /*    const password = watch('password');*/
 
     const source = axios.CancelToken.source();
-/*    const[username, setUsername] = useState("");
-    const[password, setPassword] = useState("");*/
 
     useEffect(() => {
         return function cleanup() {
