@@ -12,41 +12,6 @@ function PersonalAdviceForm() {
     const [error, toggleError] = useState(null);
     const [addSucces, toggleAddSuccess] = useState(false);
 
- /*   async function handleFormSubmit(data) {
-        setLoading(true);
-        toggleError(false);
-        const token = localStorage.getItem('token');
-
-/!*        data.preventDefault();*!/
-
-        console.log(data);
-
-        try {
-            const response = await axios.post(
-                'http://localhost:8080/wineadvicerequests', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-
-                    },
-                    /!*                body: JSON.stringify({
-                                        name: data.target.name.value,
-                                        email: data.target.email.value,
-                                        phone: data.target.phone.value,
-                                        message: data.target.message.value,
-                                    }),*!/
-                });
-            console.log('Backend response::', response.data);
-            toggleAddSuccess(true);
-            //TODO navigate to WAR
-        } catch (e) {
-            console.error(e);
-            toggleError(e.message);
-        } finally {
-            setLoading(false);
-        }
-    }
-*/
     return (
 /*        <form onSubmit={handleSubmit(handleFormSubmit)} className="advice-form">*/
         <>
